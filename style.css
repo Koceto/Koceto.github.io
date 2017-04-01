@@ -1,0 +1,138 @@
+/* Body */
+
+body {
+    background: url("03.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/* Main Page Content */
+
+.mainCont {
+    width: 1000px;;
+    margin:0 auto;
+}
+
+/* Left And Right Menus */
+
+.leftMenu, .rightMenu {
+    border-radius: 7px;
+    background-color: #f4511e;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 28px;
+    height: 80px;
+    width: 80px;
+    transition: all 0.5s;
+    position: fixed;
+}
+
+.leftNav, .rightNav {
+    font-size: 0;
+    padding: 5px;
+    cursor: pointer;
+}
+
+#homeLink:hover, #postLink:hover, #browseLink:hover, #loginLink:hover, #regLink:hover {
+    color: #000000;
+    border: hidden;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+}
+
+/* Left Side Menu */
+
+.leftMenu {
+    left: -10px;
+}
+
+.leftArrow:after {
+    content: '\00BB';
+    position: absolute;
+    color: #f4511e;
+    font-size: 50px;
+    opacity: 1;
+    top: 0;
+    right: -40px;
+    transition: 0.4s;
+    animation: lArrow 1.5s infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes lArrow {
+    0% {}
+    10% {right: -42px;}
+    20% {right: -44px;}
+    30% {right: -46px;}
+    40% {right: -48px;}
+    50% {right: -50px;}
+    60% {right: -48px;}
+    70% {right: -46px;}
+    80% {right: -44px;}
+    90% {right: -42px;}
+}
+
+.leftMenu:hover {
+    width: 300px;
+}
+
+.leftMenu:hover .leftNav {
+    position: relative;
+    top: 20px;
+    transition: 0.5s;
+    font-size: 22px;
+}
+
+.leftMenu:hover .leftArrow:after {
+    opacity: 0;
+}
+
+/* Right Side Menu */
+
+.rightMenu {
+    top: 7px;
+    right: -10px;
+    float: right;
+}
+
+.rightArrow:after {
+    content: '\00AB';
+    position: absolute;
+    color: #f4511e;
+    font-size: 50px;
+    opacity: 1;
+    top: 0;
+    left: -40px;
+    transition: 0.4s;
+    animation: rArrow 1.5s infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes rArrow {
+    0% {}
+    10% {left: -42px;}
+    20% {left: -44px;}
+    30% {left: -46px;}
+    40% {left: -48px;}
+    50% {left: -50px;}
+    60% {left: -48px;}
+    70% {left: -46px;}
+    80% {left: -44px;}
+    90% {left: -42px;}
+}
+
+.rightMenu:hover {
+    width: 300px;
+}
+
+.rightMenu:hover .rightNav {
+    position: relative;
+    top: 20px;
+    transition: 0.5s;
+    font-size: 22px;
+}
+
+.rightMenu:hover .rightArrow:after {
+    opacity: 0;
+}
