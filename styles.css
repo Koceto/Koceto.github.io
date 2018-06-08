@@ -1,0 +1,32 @@
+h1 {
+    text-align: center;
+    color: #00009e;
+}
+
+#main-container {
+    text-align: center;
+    padding-top: 20px;
+}
+
+.article {
+    padding-top: 5px;
+}
+
+.article span {
+    color: #ff8f00;
+    background-color: #000b5d;
+    border-radius: 10px;
+    padding: 6px;
+    cursor: pointer;
+}
+
+.article-content {
+    display: none;
+    font-size: 20px;
+    padding: 10px;
+    word-wrap: normal;
+    background-color: black;
+    color: #9b9dff;
+    line-height: 30px;
+    border-radius: 10px;
+}
