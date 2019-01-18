@@ -12,93 +12,596 @@
         <h1>Data Base Exam Helper Page</h1>
         <div id="main-container">
 
-            <div class="article">
-                <h3><span>ПОДХОДИ ЗА УПРАВЛЕНИЕ НА ДАННИТЕ</span></h3>
-                <div class="article-content">
-                    В съвременния свят се наблюдава изострена конкуренция в бизнес средите, при което се налага ефективно управление на голяма по обем информация, отнасяща се до работата на цялата фирма с оглед навременното вземане на решения при динамичните бизнес условия. В настоящия модул се изследват двата основни подхода за управление на данните:
-                    традиционен подход с използуване на файлове;
-                    подходът “бази от данни”.
-                    Анализират се основните характеристики, прилики и различия между тях. Разглеждат се отделните групи от хора, които работят в среда “бази от данни”. Накрая се прави кратък исторически преглед на развитието на софтуера наречен “системи за управление на бази от данни”.
-                </div>
-            </div>
-            <div class="article">
-                <h3><span>МОДЕЛИРАНЕ НА ДАННИТЕ. АРХИТЕКТУРА НА СУБД</span></h3>
-                <div class="article-content">
-                    Основна цел на системата “бази от данни” е да осигури на потребителите абстрактно представяне на данните, като скрие детайлите свързани тяхното съхранение и обработване. В този модул се разглежда моделирането на данните, което представлява процес на изобразяване на конкретно приложение в представяне, отчитащо характеристиките му и изискванията към обработките. Моделирането на данните е критично от гледна точка успешното разработване на дадена система. Въвеждат се основните понятия на концептуалното моделиране. Представена е класификация на многобройните модели на данни.
-                    Отделянето на логическата дефиниция на данните от тяхната физическа реализация се нарича независимост на данните и представлява основна характеристика на подхода “бази от данни”. В модула се изследва архитектурата на три нива, въведена със стандарт за търговските продукти и начина, по който тя способства за осигуряване на независимост на данните.
-                    В допълнение са описани основните езици и интерфейси на една СУБД.
-                </div>
-            </div>
-            <div class="article">
-                <h3><span>РЕЛАЦИОНЕН МОДЕЛ</span></h3>
-                <div class="article-content">
-                    Релационните СУБД доминират пазара на софтуера, предназначен за обработване на данните. Те представляват второ поколение СУБД и реализират релационния модел на данните. Последният се отличава с проста логическа структура, зад която се крие добре обоснована теоретична основа, липсваща при СУБД от първо поколение.
-                    В настоящия модул се дискутират основните принципи на релационния модел. Дефинира се математическото понятие релация или отношение, което е основна структура в релационните СУБД. Анализират се основните релационни ограничения, които се проверяват автоматично в търговските СУБД.
-                    В модула се обръща особено внимание на релационната алгебра, която представлява множество от операции за обработване на релациите и за формулиране на заявки. Точната употреба на отделните оператори е илюстрирана чрез примери. По този начин се изяснява тяхното действие, както и получаваните резултати.
-                </div>
-            </div>
-            <div class="article">
-                <h3><span>ПРЕГЛЕД НА ЕЗИКА SQL</span></h3>
-                <div class="article-content">
-                    В последните години езикът  (Structured Query Language) се превърна в основен език за работа с релационни бази от данни. Нещо повече неговата широка употреба се смята за основна причина, допринесла за успеха на релационните СУБД. Езикът SQL е описан подробно в стандарта SQL2 (International Standard Database Language SQL),състоящ се от около 600 страници. Първият му вариант се е наричал SEQUEL (Structured English Query Language) и е бил проектиран за експерименталната релационна СУБД SYSTEM R. Понастоящем почти всички продукти предлагат SQL, като реализациите се отличават по диалекта на езика. SQL е декларативен релационен език, който е унифициран - всички категории потребители на базата от данни могат да работят с него.
-                    В настоящия модул се прави преглед на основните възможности на езика SQL, като изложението следва разработения стандарт и се прилага подходът “илюстриране чрез примери”. По този начин се изяснява действието, както и получаваните резултати при използуването на основните езикови конструкции.
-                    SQL е изчерпателен език за работа с бази от данни, който притежава оператори за дефиниране на данните, формулиране на заявки и обновяване. В допълнение са разработени средства за задаване на ограничения за цялост на базата и методология за вграждането му в език за програмиране.
-                </div>
-            </div>
-            <div class="article">
-                <h3><span>НОРМАЛИЗАЦИЯ НА РЕЛАЦИОННИ БАЗИ ОТ ДАННИ</span></h3>
-                <div class="article-content">
-                    Проектът на всяка една релационна база от данни обхваща създаването на прецизно представяне на данните, взаимодействията между тях и ограниченията за цялостност. Постигането на тази цел се осъществява посредством дефинирането на множество от отношения.
-                    В настоящия модул се разгледат теоретичните основи, позволяващи проектиране “отгоре-надолу” на релационни бази. Въвежда се понятието “функционална зависимост”, което представлява основна формална мярка за това дали атрибутите са групирани подходящо при изграждането на дадена релационна схема.
-                    Нормализацията на данните като процес е представена накратко и илюстрирана със съответните примери. Описани са трите най-използувани в практиката нормални форми.
-                </div>
-            </div>
-            <div class="article">
-                <h3><span>КОНЦЕПТУАЛНО МОДЕЛИРАНЕ</span></h3>
-                <div class="article-content">
-                    Концептуалното моделиране представлява важен етап от проектирането на качествени бази от данни. С понятието “концептуален модел” се означава множеството от понятия, с които се описва структурата на разработваната база от данни и свързаните с нея транзакции. Главна цел при разработването на концептуален модел е да се отрази възможно най-добре потребителското възприемане на данните като същевременно се пренебрегва разглеждането на чисто технически аспекти, свързани с проектирането. Поради тези причини концептуалният модел е независим от избраната СУБД или хардуерна платформа, с чиято помощ ще се извършва реализацията на базата. В литературата  се използува и терминът “семантично моделиране”, който има аналогично съдържание.
-                    В модула се разглежда един от най-прилаганите при проектирането концептуални модели. Моделът “понятие - взаимодействие” или E-R (entity-relationship) модел е разработен от Чен за да подпомогне проектирането на базата от данни, свързана с определена информационна система. За първи път се предлага диаграмен метод за представяне схемата на базата, в който липсват, свързани с конкретна реализация, детайли.
-                    В настоящия модул са представени основните понятия и структурни ограничения на E-R модела. Разгледани са означенията, използувани в E-R диаграмите за изобразяване схемата на базата, като са илюстрирани върху примерната база от данни ПРЕДПРИЯТИЕ.
-                </div>
-            </div>
-            <div class="article">
-                <h3><span>ПРОЕКТИРАНЕ НА БАЗИ ОТ ДАННИ</span></h3>
-                <div class="article-content">
-                    В настоящия модул се преминава от теорията към практически въпроси, свързани с проектирането на бази от данни. Цялостната дейност при процеса “проектиране” следва някаква избрана методология. Цел на модула, обаче, е да се разгледа основно самия процес, така както той протича в рамките на големи компании, а не изучаването на специфична методология.
-                    Изложението започва с преглед на основните етапи от жизнения цикъл на информационните системи, като се дефинират отделните дейности при всеки етап. Основно внимание се обръща върху етапа “проектиране на базата от данни”. Накратко се разглеждат въпроси, свързани с проектирането на приложения от тип “база от данни”. Изброени са задачите, които се отнасят до администрирането на базата. Накрая са дискутирани автоматизираните средства за проектиране на бази от данни.
-                </div>
-            </div>
-            <div class="article">
-                <h3><span>ФИЗИЧЕСКА ОРГАНИЗАЦИЯ НА БАЗИТЕ ОТ ДАННИ</span></h3>
-                <div class="article-content">
-                    Разглеждат се основни понятия, свързани с физическото съхранение на базата върху магнитен или оптичен носител. Понеже данните са устойчиви и с голям обем те не могат да се пазят в основната памет на компютъра, която е енергозависима и със сравнително по-висока цена. Независимо, че СУБД предлага вградени възможности за организация на данните, необходими са познания относно реализацията на базата във вид на файлове и пътища за достъп.
-                    В темата се провежда анализ на основните файлови организации, защото това е важно за проектирането на бази от данни с добра ефективност при различните обработки. Особено внимание се отделя на индексирането като главно средство за подобряване производителността при извличане на данните.
-                </div>
-            </div>
-            <div class="article">
-                <h3><span>РАЗПРЕДЕЛЕНИ БАЗИ ОТ ДАНН|И</span></h3>
-                <div class="article-content">
-                    Технологията за управление на разпределени бази от данни e съществено развитие на СУБД.
-                    В настоящия модул се разглеждат основните понятия и принципи, свързани с разпределените бази от данни. Прави се ясно разграничение между разпределената обработка, разпределените и паралелните СУБД. Дискутира се разширената функционалност на СУБД, породена от разпределението на данните по възлите на мрежа и се класифицират възможните архитектури.
-                    Основно внимание се обръща върху проектирането на разпределена база и по-специално върху фрагментирането, разпределението и дублирането на данните. Накратко се разглеждат въпроси, свързани с архитектурата “клиент-сървър” и как тази архитектура се реализира при разпределените СУБД. Разглеждат се въпроси относно бъдещото й развитие.
-                </div>
-            </div>
-            <div class="article">
-                <h3><span>УПРАВЛЕНИЕ НА ТРАНЗАКЦИИ</span></h3>
-                <div class="article-content">
-                    Регулиране на едновременния достъп се нарича процесът на управление на едновременно заявените от различни потребители операции към базата от данни, така че те да не си влияят една с друга. Възстановяване се нарича процесът на възвръщане на базата в  непротиворечивото състояние, предхождащо настъпила техническа авария.
-                    В настоящия модул се разглежда основното понятие, свързано с горепосочените процеси – транзакцията. Обосновава се необходимостта от регулиране на едновременния достъп чрез проблеми, възникващи при обработването на поток от транзакции. Дефинира се понятието “график” и неговото значение при възстановяването на базата в коректно състояние. Накратко се  дискутира свеждането на даден график до последователен, който не нарушава целостта на базата.
-                    Основно внимание се обръща върху методите за управление на едновременния достъп, които гарантират свеждането на графика за изпълнение на транзакциите до последователен. Разглежда се най-широко прилаганият метод в търговските СУБД – двуетапното заключване на базата. Накратко се описват възможни проблеми, свързани него. В допълнение се описват и други възможни методи за управление на едновременния достъп.  
-                </div>
-            </div>
-            <div class="article">
-                <h3><span>WEB ТЕХНОЛОГИИ И СУБД</span></h3>
-                <div class="article-content">
-                    В съвременния свят WWW представлява най-мощната и широко използувана информационна система в рамките на глобалната мрежа Интернет, независимо от това, че началото й се поставя през не особено далечната 1989 г. Тя е особено привлекателна като платформа за разпространяване на интерактивни приложения, при които се обработват големи обеми от данни. Комбинирането на WWW и СУБД допринася за разработването на сложни приложения от тип “база от данни”.
-                    В настоящия модул се дискутират СУБД и основните принципи на базите от данни, пренесени в средата Web. Разгледани са различни подходи за прилагането на технологията “бази от данни” в WWW така, както те са се появили хронологично. Описани са начините за интегриране на СУБД с Web и са анализирани различни технологични решения. Всички те допринасят за интерактивен достъп до многобройните бази от данни, а понякога и до бизнес логиката, използувана върху Web. В допълнение се решава задачата за управлението на Web документите, доскоро извършвано с помощта на  файлово-базирани системи. Не на последно място директният достъп до базите от данни през Web позволява извличането на динамична по своя характер информация.
-                    Целта на настоящия модул е скромна – да опише накратко основните технологични постижения до момента, а интересуващият се читател ще намери допълнителен материал в приложената литература и електронни източници.
-                </div>
-            </div>
+            --1. SCHEMA MOVIE
+            --1.1. DISPLAY TITLE AND YEAR OF MOVIES THAT WERE MADE IN 1980
+            SELECT TITLE, YEAR 
+            FROM MOVIE 
+            WHERE YEAR = 1980
+
+            --1.2. DISPLAY MOVIES THAT WERE MADE AFTER 1975 AND LENGHT IS LESS THAN 120 MINUTES
+            SELECT * FROM MOVIE
+            WHERE YEAR > 1975
+            AND LENGTH < 120
+
+            --1.3. DISPLAY MOVIES THAT WERE MADE IN 1980 OR AFTER 1980 AND ARE IN COLOR
+            SELECT * FROM MOVIE
+            WHERE YEAR >= 1980
+            AND UPPER(INCOLOR) = 'Y'
+
+            --1.4. DISPLAY FEMALE ACTRORS THAT WERE BORN BEFORE 1980
+            SELECT * FROM MOVIESTAR 
+            WHERE BIRTHDATE < '01-JAN-1980'
+            AND GENDER = 'F'
+
+            --1.5. FROM TABLE STARSIN DISPLAY ALL MOVIES THAT WERE NOT MADE IN 1977
+            SELECT * FROM STARSIN 
+            WHERE MOVIEYEAR <> 1977
+
+            --1.6. DISPLAY ALL ACTORS, WHO WERE BORN IN 1977
+            SELECT * FROM MOVIESTAR
+            WHERE BIRTHDATE BETWEEN '01-JAN-1977' AND '31-DEC-1977'
+
+            --1.7. DISPLAY ALL MOVIES WHERE LENGTH IS NULL
+            SELECT * FROM MOVIE
+            WHERE LENGTH IS NULL
+
+            --2. SCHEMA PC
+            --2.1. DISPLAY ALL PRODUCTS THAT ARE NOT PC AND MAKER IS ONE OF A, B, C
+            SELECT * FROM PRODUCT 
+            WHERE MAKER IN ('A','B','C')
+            AND TYPE != 'PC'
+
+            --2.2. DISPLAY ALL PCs WHOSE PRICE IS BETWEEN 600 AND 1200
+            SELECT * FROM PC 
+            WHERE PRICE BETWEEN 600 AND 1200
+
+            --2.3. DISPLAY ALL PCs WHOSE PRICE IS BIGGER THAN 600 AND LESS THAN 1200
+            SELECT * FROM PC 
+            WHERE PRICE > 600 AND PRICE < 1200
+
+            --2.4. DISPLAY ALL LAPTOPS WHOSE RAM IS NOT 128 AND SCREEN IS 12 OR 15 INCHES
+            SELECT * FROM LAPTOP
+            WHERE RAM <> 128
+            AND SCREEN IN (12,15)
+
+            --3. SCHEMA SHIPS 
+            --3.1. DISPLAY ALL SHIPS WHERE THE 4TH LETTER IN CLASS = 'a'
+            SELECT * FROM SHIPS
+            WHERE CLASS LIKE '___a%'
+
+            --3.2. DISPLAY ALL SHIPS, WHOSE NAMES STAR WITH 'R' AND CLASS DOES NOT START WITH 'R'
+            SELECT * FROM SHIPS
+            WHERE NAME LIKE 'R%'
+            AND CLASS NOT LIKE 'R%'
+
+            --3.3 DISPLAY ALL CLASSES OF SHIPS, THAT HAVE NUMBER OF GUNS DIFFERENT FROM 8 AND 12
+            SELECT * FROM CLASSES 
+            WHERE NUMGUNS NOT IN (8,12)
+
+            --3.4. DISPLAY ALL SHIPS THAT WERE LAUNCHED BEFORE 1920 OR AFTER 1940, BUT NOT IN 1916
+            SELECT * FROM SHIPS
+            WHERE (LAUNCHED < 1920 OR LAUNCHED > 1940)
+            AND LAUNCHED <> 1916
+
+
+
+
+
+            --1.1. DISPLAY MOVIES THAT WERE NOT MADE BY 'MGM' AND ARE IN COLOR
+            --USE UPPER AND LOWER FUNCTIONS TO CAPTURE ALL RESULTS
+            SELECT * FROM MOVIE
+            WHERE UPPER(STUDIONAME) <> 'MGM'
+            AND LOWER(INCOLOR) = 'y'
+
+
+            --1.2 DISPLAY MOVIESTAR NAME IN THE FOLLOWING WAYS: ORIGINAL, IN UPPER, IN LOWER AND INITCAP MODES
+            --GIVE APPROPRIATE ALIASES
+            SELECT 
+            NAME, 
+            UPPER(NAME) AS UPPER_NAME, 
+            LOWER(NAME) AS LOWER_NAME, 
+            INITCAP(NAME) AS INITCAP_NAME
+            FROM MOVIESTAR
+
+            --1.3 DISPLAY THE FIRST 5 LETTERS OF THE MOVIE TITELS IN TABLE MOVIE
+            SELECT TITLE, SUBSTR(TITLE, 1,5)
+            FROM MOVIE
+
+            --1.4 DISPLAY THE LAST 5 LETTERS OF THE MOVIE TITELS IN TABLE MOVIE
+            SELECT TITLE, SUBSTR(TITLE, -5)
+            FROM MOVIE
+
+            --1.5 DISPLAY 3 LETTERS, STARTING FROM POSITION 10, OF THE MOVIE TITELS IN TABLE MOVIE
+            SELECT TITLE, SUBSTR(TITLE, 10, 3)
+            FROM MOVIE
+
+            --1.6. CALCULATE THE LENGTH OF MOVIETITLES IN TABLE STARSIN
+            SELECT MOVIETITLE, LENGTH(MOVIETITLE) AS LENGTH
+            FROM STARSIN
+
+            --2.1 CHECK IF FIELD TYPE IN TABLE PRODUCT CONTAINS CAPITAL 'P'
+            SELECT TYPE, INSTR(TYPE,'P')
+            FROM PRODUCT
+
+            --2.2 CHECK IF FIELD TYPE IN TABLE PRODUCT CONTAINS 'P', INCLUDING 'p'
+            SELECT TYPE, INSTR(UPPER(TYPE),'P')
+            FROM PRODUCT
+
+            --2.3. DISPLAY MODEL FROM PC WITH 8 DIGITS BY ADDING '0' TO THE LEFT
+            SELECT MODEL, LPAD(MODEL, 8, 0) AS LPAD_MODEL
+            FROM PC
+
+            --2.4. DISPLAY TYPE FROM PRINTER WITH 8 DIGITS BY ADDING '*' TO THE RIGHT
+            SELECT RPAD(TYPE, 8, '*') AS RPAD_TYPE
+            FROM PRINTER
+
+            --2.5. REPLACE ALL 'P' IN FIELD TYPE, TABLE PRODUCT WITH '0'
+            SELECT TYPE, INITCAP(REPLACE(UPPER(TYPE),'P', '0'))
+            FROM PRODUCT
+
+            --2.6 FOR TABLE LAPTOP, FIELD SCREEN, REMOVE ALL ONES
+            SELECT SCREEN, TRIM(1 FROM SCREEN) 
+            FROM LAPTOP
+
+            --2.7 DISPLAY THE PRICE OF PRINTER ROUNDED TO 2 DECIMALS, A WHOLE NUMBER AND 100
+            SELECT PRICE, ROUND(PRICE, 2), ROUND(PRICE, 0), ROUND(PRICE, -2)
+            FROM PRINTER
+
+            SELECT 15.8367, ROUND(15.8367, 2), ROUND(15.8367, 0), ROUND(15.8367, -1)
+            FROM DUAL
+
+            --3.1. DISPLAY THE LAUNCH YEAR, ROUNDED TO 10 FOR SHIPS, WHOSE LAUNCH YEAR CONTAINS 7, SORT BY LAUNCHED
+            SELECT LAUNCHED, ROUND(LAUNCHED, -1)
+            FROM SHIPS
+            WHERE INSTR(LAUNCHED,7)<>0 
+            ORDER BY LAUNCHED
+
+            --3.2. DISPLAY THE LAUNCH YEAR, TRUNCATED TO 10 FOR SHIPS, WHOSE LAUNCH YEAR CONTAINS 7, SORT BY LAUNCHED
+            SELECT LAUNCHED, TRUNC(LAUNCHED, -1)
+            FROM SHIPS
+            WHERE INSTR(LAUNCHED,7)<>0 
+            ORDER BY LAUNCHED
+
+            --3.3. CALCULATE THE RESUDUAL OF DISPLACEMENT DIVIDED BY 42 - TABLE CLASSES
+            SELECT DISPLACEMENT , MOD(DISPLACEMENT, 42) AS MOD
+            FROM CLASSES
+
+            --3.4 CHECK IF THE NUMBER OF GUNS IS ODD OR EVEN - TABLE CLASSES
+            SELECT 
+            NUMGUNS, 
+            MOD(NUMGUNS,2) AS MOD, 
+            CASE WHEN MOD(NUMGUNS,2) = 0 THEN 'CHETNO' ELSE 'NECHETNO' END AS ODD_EVEN
+            FROM CLASSES
+
+
+
+
+            --1.1. DISPLAY MALE ACTORS, BORN AFTER 1969
+            SELECT * FROM MOVIESTAR
+            WHERE BIRTHDATE > '01-JAN-1970'
+            AND GENDER = 'M'
+
+            --1.2. DISPLAY THE CURRENT DATE
+            SELECT SYSDATE FROM DUAL
+
+            --1.3. DISPLAY THE DATE AFTER 15 DAYS
+            SELECT SYSDATE+15 FROM DUAL
+
+            --1.4. DISPLAY THE NUMBER OF DATES TO NEXT CHRISTMAS
+            SELECT TRUNC(TO_DATE('25-DEC-2016','DD-MON-YYYY') - SYSDATE) DAYS_TO_CHISTMAS FROM DUAL
+
+            --1.4. DISPLAY THE NUMBER OF DATES TO NEXT CHRISTMAS
+            SELECT TRUNC(TO_DATE('25-DEC-2016','DD-MON-YYYY') - SYSDATE) DAYS_TO_CHISTMAS FROM DUAL
+
+            --1.5. DISPLAY THE AGE (YEARS) OF ALL ACTORS, TABLE MOVIESTAR
+            SELECT  ROUND((SYSDATE-BIRTHDATE)/365)|| ' YEARS ' AS AGE,  
+            MOVIESTAR.* FROM MOVIESTAR
+
+            --1.6. DISPLAY THE AGE (YEARS AND DAYS) OF ALL ACTORS, TABLE MOVIESTAR
+            SELECT  ROUND((SYSDATE-BIRTHDATE)/365)|| ' YEARS '|| ROUND(MOD(SYSDATE-BIRTHDATE,365),0)|| ' DAYS ' AGE,  
+            MOVIESTAR.* FROM MOVIESTAR
+
+            --1.7 HOW MANY DAYS TO A STAR'S BIRTHDATE?
+            SELECT 365-ROUND(MOD(SYSDATE-BIRTHDATE,365),0) AS DAYS_TO_BDAY, A.*
+            FROM MOVIESTAR A
+
+            --1.8. DISPLAY BIRTHDATES IN FORMAT 'DD Month YYYY'
+            SELECT TO_CHAR(BIRTHDATE, 'DD Month YYYY') from moviestar
+
+            --2.1. DISPLAY MODEL FROM TABLE PRINTER AS A NUMBER
+            SELECT MODEL, TO_NUMBER(MODEL) FROM PRINTER
+
+            --2.2. DISPLAY THE SUM OF ALL MODELS 
+            SELECT SUM(MODEL), SUM(TO_NUMBER(MODEL)) FROM PRINTER
+
+            --2.3. DISPLAY 1-ST JUNE 1990 AS A DATE
+            SELECT TO_DATE('01-06-2016','DD-MM-YYYY') DT FROM DUAL
+
+            --2.4. DISPLAY PRICE LIKE STRING, WITH A DOLLAR SIGN, TWO DECIMALS AND THOUSAND SEPARATOR 
+            SELECT TO_CHAR(PRICE,'$99,999.00') NEW_PRICE FROM PC
+
+            --3.1. HOW MANY MONTHS BETWEEN '28-JAN-2013' AND '12-JUN-2016'
+            SELECT  TRUNC(MONTHS_BETWEEN('28-JAN-2013','12-JUN-2016')) MONTHS FROM DUAL
+
+            --3.2 ADD 50 MONTHS TO DATES IN BATTLES
+            SELECT A.*, ADD_MONTHS(DATES,50)
+            FROM BATTLES a
+
+            --3.3. NEXT MONDAY AFTER EACH BATTLE
+            SELECT A.*, NEXT_DAY(DATES,'MONDAY')
+            FROM BATTLES a
+
+            --3.4. LAST DAY OF MONTH FOR EACH BATTLE
+            SELECT A.*, LAST_DAY(DATES)
+            FROM BATTLES a
+
+
+
+
+            --1. SCHEMA MOVIE
+            --1.1. DISPLAY TITLE AND YEAR OF MOVIES THAT WERE MADE IN 1980
+            SELECT TITLE, YEAR 
+            FROM MOVIE 
+            WHERE YEAR = 1980
+
+            --1.2. DISPLAY MOVIES THAT WERE MADE AFTER 1975 AND LENGHT IS LESS THAN 120 MINUTES
+            SELECT * FROM MOVIE
+            WHERE YEAR > 1975
+            AND LENGTH < 120
+
+            --1.3. DISPLAY MOVIES THAT WERE MADE IN 1980 OR AFTER 1980 AND ARE IN COLOR
+            SELECT * FROM MOVIE
+            WHERE YEAR >= 1980
+            AND UPPER(INCOLOR) = 'Y'
+
+            --1.4. DISPLAY FEMALE ACTRORS THAT WERE BORN BEFORE 1980
+            SELECT * FROM MOVIESTAR 
+            WHERE BIRTHDATE < '01-JAN-1980'
+            AND GENDER = 'F'
+
+            --1.5. FROM TABLE STARSIN DISPLAY ALL MOVIES THAT WERE NOT MADE IN 1977
+            SELECT * FROM STARSIN 
+            WHERE MOVIEYEAR <> 1977
+
+            --1.6. DISPLAY ALL ACTORS, WHO WERE BORN IN 1977
+            SELECT * FROM MOVIESTAR
+            WHERE BIRTHDATE BETWEEN '01-JAN-1977' AND '31-DEC-1977'
+
+            --1.7. DISPLAY ALL MOVIES WHERE LENGTH IS NULL
+            SELECT * FROM MOVIE
+            WHERE LENGTH IS NULL
+
+            --2. SCHEMA PC
+            --2.1. DISPLAY ALL PRODUCTS THAT ARE NOT PC AND MAKER IS ONE OF A, B, C
+            SELECT * FROM PRODUCT 
+            WHERE MAKER IN ('A','B','C')
+            AND TYPE != 'PC'
+
+            --2.2. DISPLAY ALL PCs WHOSE PRICE IS BETWEEN 600 AND 1200
+            SELECT * FROM PC 
+            WHERE PRICE BETWEEN 600 AND 1200
+
+            --2.3. DISPLAY ALL PCs WHOSE PRICE IS BIGGER THAN 600 AND LESS THAN 1200
+            SELECT * FROM PC 
+            WHERE PRICE > 600 AND PRICE < 1200
+
+            --2.4. DISPLAY ALL LAPTOPS WHOSE RAM IS NOT 128 AND SCREEN IS 12 OR 15 INCHES
+            SELECT * FROM LAPTOP
+            WHERE RAM <> 128
+            AND SCREEN IN (12,15)
+
+            --3. SCHEMA SHIPS 
+            --3.1. DISPLAY ALL SHIPS WHERE THE 4TH LETTER IN CLASS = 'a'
+            SELECT * FROM SHIPS
+            WHERE CLASS LIKE '___a%'
+
+            --3.2. DISPLAY ALL SHIPS, WHOSE NAMES STAR WITH 'R' AND CLASS DOES NOT START WITH 'R'
+            SELECT * FROM SHIPS
+            WHERE NAME LIKE 'R%'
+            AND CLASS NOT LIKE 'R%'
+
+            --3.3 DISPLAY ALL CLASSES OF SHIPS, THAT HAVE NUMBER OF GUNS DIFFERENT FROM 8 AND 12
+            SELECT * FROM CLASSES 
+            WHERE NUMGUNS NOT IN (8,12)
+
+            --3.4. DISPLAY ALL SHIPS THAT WERE LAUNCHED BEFORE 1920 OR AFTER 1940, BUT NOT IN 1916
+            SELECT * FROM SHIPS
+            WHERE (LAUNCHED < 1920 OR LAUNCHED > 1940)
+            AND LAUNCHED <> 1916
+
+
+
+
+
+            --JOIN I
+
+            -- 1. Schema PC
+            --1.1. Return maker and speed of those laptops with hd >9 GB. Apply NATURAL join
+            SELECT maker, speed
+            FROM product NATURAL JOIN laptop
+            WHERE  hd > 9;
+            
+            --1.2. Return maker and speed of those laptops with hd >9 GB. Apply Join with USING clause
+            SELECT maker, speed
+            FROM product JOIN laptop
+            USING (model)
+            WHERE  hd > 9;
+            
+            --1.3. Return maker and speed of those laptops with hd >9 GB. Apply Join with ON clause
+            SELECT maker, speed
+            FROM product JOIN laptop
+            ON product.model = laptop.model 
+            WHERE  hd > 9;
+            
+            --1.4. The size of all HD that are present in more than one PC - Selfjoin
+            SELECT DISTINCT pc1.hd
+            FROM pc pc1, pc pc2
+            where pc1.code<>pc2.code and pc1.hd=pc2.hd
+            order by pc1.hd;
+
+            --3 times
+            SELECT DISTINCT pc1.hd
+            FROM pc  pc1, pc pc2, pc pc3
+            where pc1.code<>pc2.code and pc1.code<>pc3.code and pc2.code<>pc3.code
+            and pc1.hd=pc2.hd and pc2.hd=pc3.hd
+            order by pc1.hd;
+
+            -- 2. Schema Movies 
+            
+            --2.1.  Names of actors that took part in �Terms of Endearment� - INNER JOIN
+            SELECT A.starname, B.gender
+            FROM starsin A JOIN moviestar B
+            ON A.starname = B.name
+            WHERE A.movietitle = 'Terms of Endearment'
+            AND B.gender = 'M';
+
+            --2.2.	Name of the producer of �Star Wars� and all other movies that he produced JOIN
+            -- Option 1
+            SELECT title, t.name
+            FROM    movie m
+                JOIN
+                    (SELECT name, cert#
+                        FROM movieexec
+                        WHERE cert# IN (SELECT producerc#
+                                        FROM movie
+                                        WHERE title = 'Star Wars')) t
+                ON m.producerc# = t.cert#;
+
+            -- Option 2
+
+            SELECT title, name
+            FROM movie m JOIN movieexec me ON m.producerc# = me.cert#
+            WHERE me.cert# IN (SELECT producerc#
+                                FROM movie
+                                WHERE title = 'Star Wars');
+
+            --2.3.	Names of producers, that produced the movies with �Harrison Ford� 
+            SELECT DISTINCT me.name
+            FROM movie m
+                JOIN starsin s
+                    ON m.title = s.movietitle AND m.year = s.movieyear
+                JOIN movieexec me
+                    ON m.producerc# = me.cert#
+            WHERE starname = 'Harrison Ford';
+
+            
+            --2.4.	Name of studio and names of actors, who participated in movies from that studio, order by studio name. 
+            SELECT DISTINCT s.name, si.starname
+                FROM studio s
+                    JOIN movie m
+                        ON s.name = m.studioname
+                    JOIN starsin si
+                        ON m.title = si.movietitle AND m.year = si.movieyear
+            ORDER BY s.name;
+
+
+            
+            --2.5.	Names of actors, who participated in movies with biggest networth.
+
+            SELECT si.starname, t.networth, m.title
+            FROM starsin si
+                JOIN movie m
+                    ON si.movietitle = m.title AND si.movieyear = m.year
+                JOIN (SELECT cert#, networth
+                        FROM movieexec
+                        WHERE networth >= ALL (SELECT networth FROM movieexec)) t
+                    ON m.producerc# = t.cert#;
+
+            --3. Schema SHIPS
+            --3.1. Display names of ships that have displacement > 35000 Natural Join
+            SELECT s.name
+            FROM ships s natural join classes c
+            WHERE  c.displacement > 35000;
+            
+            --3.2. Display names of ships that have displacement > 35000 Using
+            SELECT s.name
+            FROM ships s join classes c
+            using(class) 
+            where c.displacement > 35000;
+            
+            --3.3. Display names of ships that have displacement > 35000 On
+            SELECT s.name
+            FROM ships s join classes c
+            using(class) 
+            where c.displacement > 35000;
+
+            --3.4. Display name, displacement, numguns of all ships that took part in battle �Guadalcanal� 
+            SELECT s.name, c.displacement, c.numguns
+            FROM ships s, classes c, outcomes o
+            WHERE o.battle = 'Guadalcanal' AND o.ship = s.name AND c.class = s.class;
+
+
+            --3.5. Display the names of those countries that have ships from types �bb� and  �bc� 
+            -- option 1
+            SELECT c1.country, c1.TYPE, c2.TYPE
+            FROM classes c1, classes c2
+            WHERE c1.country = c2.country AND c1.TYPE = 'bb' AND c2.TYPE = 'bc';
+
+            --3.6. Display the names of battles with 3 ships from one country
+            SELECT DISTINCT o1.battle
+            FROM classes c1,
+                ships s1,
+                outcomes o1,
+                classes c2,
+                ships s2,
+                outcomes o2,
+                classes c3,
+                ships s3,
+                outcomes o3
+            WHERE     c1.class = s1.class
+                AND s1.name = o1.ship
+                AND c2.class = s2.class
+                AND s2.name = o2.ship
+                AND c3.class = s3.class
+                AND s3.name = o3.ship
+                AND c1.country = c2.country
+                AND c1.country = c3.country
+                AND o1.battle = o2.battle
+                AND o1.battle = o3.battle
+                AND s1.name <> s2.name
+                AND s1.name <> s3.name
+                AND s2.name <> s3.name;
+
+
+
+
+
+                --1.1.  Names of actors that took part in �Terms of Endearment� USE INTERSECT 
+            SELECT starname
+            FROM starsin
+            WHERE movietitle = 'Terms of Endearment'
+            INTERSECT
+            SELECT name
+            FROM moviestar
+            WHERE gender = 'M';
+
+            --1.2.	Names of actors that took part in �MGM� movies in 1995 - JOIN
+            SELECT starname
+            FROM starsin JOIN movie
+            ON movietitle = title
+            WHERE     studioname = 'MGM'
+                AND year = 1995
+                AND year = movieyear;
+
+
+            --1.3.	Name of the president of �MGM�: JOIN
+            SELECT DISTINCT name
+            FROM movie JOIN movieexec
+            ON producerc# = cert# AND studioname = 'MGM';
+
+
+            --1.4.	All moves with lenght > than the lenght of �Gone With the Wind�: SELFJOIN
+            SELECT *
+            FROM movie m1, movie m2
+            WHERE     m2.title = 'Gone With the Wind'
+                AND m1.year <> m2.year
+                AND m1.title <> m2.title
+                AND m1.LENGTH < m2.LENGTH;
+
+            --1.5.	The names of those producers whose networth is greater than �Mery Griffin�: SELFJOIN
+            SELECT *
+            FROM movieexec me1, movieexec me2
+            WHERE     me1.networth > me2.networth
+                AND me1.cert# <> me2.cert#
+                AND me2.name = 'Mery Griffin';
+                
+            --1.6.	Names of actors, who didn't participate in a single movie (use a join) LEFT JOIN
+            SELECT ms.name, si.movietitle
+            FROM moviestar ms LEFT JOIN starsin si ON ms.name = si.starname
+            WHERE si.movietitle IS NULL;
+
+            --2. Schema PC
+
+            --2.1. Display maker, model and type of products, that are not being sold (they are missing in tables PC, Laptop, Printer)
+            --Union
+            SELECT p.*
+            FROM product p LEFT JOIN pc ON p.model = pc.model
+            WHERE TYPE = 'PC' AND code IS NULL
+            UNION
+            SELECT p.*
+            FROM product p LEFT JOIN printer pp ON p.model = pp.model
+            WHERE p.TYPE = 'Printer' AND code IS NULL
+            UNION
+            SELECT p.*
+            FROM product p LEFT JOIN laptop l ON p.model = l.model
+            WHERE TYPE = 'Laptop' AND code IS NULL;
+
+            --2.2. Model and price of all product from maker  �B� - Union
+            SELECT DISTINCT p.model, l.price AS Price, p.TYPE
+            FROM product p, laptop l
+            WHERE maker = 'B' AND p.model = l.model
+            UNION
+            SELECT DISTINCT p.model, pc.price AS Price, p.TYPE
+            FROM product p, pc
+            WHERE maker = 'B' AND p.model = pc.model
+            UNION
+            SELECT p.model, pr.price AS Price, p.TYPE
+            FROM product p, printer pr
+            WHERE maker = 'B' AND p.model = pr.model;
+
+            --2.3. Display all couples of PC models, that have the same frequency and memory. Selfjoin
+            Display them only once  (i, j), but not (j, i) 
+            SELECT m1.model, m2.model
+            FROM pc m1, pc m2
+            WHERE m1.speed = m2.speed AND m1.ram = m2.ram AND m1.model > m2.model;
+
+            --2.4. Display the makers of at least 2 different PCs with speed > 400. 
+            SELECT DISTINCT p1.maker, p1.model
+            FROM product p1, product p2, pc  pc1, pc pc2
+            where 
+                p1.maker=p2.maker  
+            and pc1.model=p1.model  
+            and pc2.model=p2.model
+            and p1.model<>p2.model 
+            and pc1.speed>400
+            and pc2.speed>400;
+
+            --3. Schema SHIPS
+            --3.1. Display the names of those countries that have ships from types �bb� and  �bc� 
+            -- Intersect
+            (SELECT country
+            FROM classes
+            WHERE TYPE = 'bb')
+            INTERSECT
+            (SELECT country
+            FROM classes
+            WHERE TYPE = 'bc');
+            
+            --3.2. Display the names of ships, that were damaged in a battle, but then took part in another battle. 
+            SELECT o1.ship
+            FROM outcomes o1,
+                battles b1,
+                outcomes o2,
+                battles b2
+            WHERE     o1.battle = b1.name
+                AND o2.battle = b2.name
+                AND o1.ship = o2.ship
+                AND b1.dates < b2.dates
+                AND o1.result = 'damaged';
+
+            --3.3. Display all available information for every ship, including its class. Exclude results for classes, that have no ships. 
+            SELECT *
+            FROM ships s RIGHT JOIN classes c ON s.class = c.class
+            WHERE s.name IS NOT NULL;
+
+            --3.4. Repeat 3.1 but include classes, that have no ships, but ships with same name exist
+            SELECT *
+            FROM ships s RIGHT JOIN classes c ON s.class = c.class
+            WHERE s.name IS NOT NULL
+            UNION
+            SELECT *
+            FROM ships s RIGHT JOIN classes c ON s.class = c.class
+            WHERE s.name IS NULL AND c.class IN (SELECT name FROM ships);
+
+            --3.5. For every country display ship names, that never participated in a battle.  
+            SELECT DISTINCT c.country, s.name
+                FROM classes c
+                    JOIN ships s
+                        ON c.class = s.class
+                    LEFT JOIN outcomes o
+                        ON s.name = o.ship
+            WHERE o.ship IS NULL
+            ORDER BY c.country;
 
         </div>
     </body>
