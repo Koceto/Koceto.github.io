@@ -11,598 +11,598 @@
     <body onload="addEventListeners()">
         <h1>Data Base Exam Helper Page</h1>
         <div id="main-container">
-
-            --1. SCHEMA MOVIE
-            --1.1. DISPLAY TITLE AND YEAR OF MOVIES THAT WERE MADE IN 1980
-            SELECT TITLE, YEAR 
-            FROM MOVIE 
-            WHERE YEAR = 1980
-
-            --1.2. DISPLAY MOVIES THAT WERE MADE AFTER 1975 AND LENGHT IS LESS THAN 120 MINUTES
-            SELECT * FROM MOVIE
-            WHERE YEAR > 1975
-            AND LENGTH < 120
-
-            --1.3. DISPLAY MOVIES THAT WERE MADE IN 1980 OR AFTER 1980 AND ARE IN COLOR
-            SELECT * FROM MOVIE
-            WHERE YEAR >= 1980
-            AND UPPER(INCOLOR) = 'Y'
-
-            --1.4. DISPLAY FEMALE ACTRORS THAT WERE BORN BEFORE 1980
-            SELECT * FROM MOVIESTAR 
-            WHERE BIRTHDATE < '01-JAN-1980'
-            AND GENDER = 'F'
-
-            --1.5. FROM TABLE STARSIN DISPLAY ALL MOVIES THAT WERE NOT MADE IN 1977
-            SELECT * FROM STARSIN 
-            WHERE MOVIEYEAR <> 1977
-
-            --1.6. DISPLAY ALL ACTORS, WHO WERE BORN IN 1977
-            SELECT * FROM MOVIESTAR
-            WHERE BIRTHDATE BETWEEN '01-JAN-1977' AND '31-DEC-1977'
-
-            --1.7. DISPLAY ALL MOVIES WHERE LENGTH IS NULL
-            SELECT * FROM MOVIE
-            WHERE LENGTH IS NULL
-
-            --2. SCHEMA PC
-            --2.1. DISPLAY ALL PRODUCTS THAT ARE NOT PC AND MAKER IS ONE OF A, B, C
-            SELECT * FROM PRODUCT 
-            WHERE MAKER IN ('A','B','C')
-            AND TYPE != 'PC'
-
-            --2.2. DISPLAY ALL PCs WHOSE PRICE IS BETWEEN 600 AND 1200
-            SELECT * FROM PC 
-            WHERE PRICE BETWEEN 600 AND 1200
-
-            --2.3. DISPLAY ALL PCs WHOSE PRICE IS BIGGER THAN 600 AND LESS THAN 1200
-            SELECT * FROM PC 
-            WHERE PRICE > 600 AND PRICE < 1200
-
-            --2.4. DISPLAY ALL LAPTOPS WHOSE RAM IS NOT 128 AND SCREEN IS 12 OR 15 INCHES
-            SELECT * FROM LAPTOP
-            WHERE RAM <> 128
-            AND SCREEN IN (12,15)
-
-            --3. SCHEMA SHIPS 
-            --3.1. DISPLAY ALL SHIPS WHERE THE 4TH LETTER IN CLASS = 'a'
-            SELECT * FROM SHIPS
-            WHERE CLASS LIKE '___a%'
-
-            --3.2. DISPLAY ALL SHIPS, WHOSE NAMES STAR WITH 'R' AND CLASS DOES NOT START WITH 'R'
-            SELECT * FROM SHIPS
-            WHERE NAME LIKE 'R%'
-            AND CLASS NOT LIKE 'R%'
-
-            --3.3 DISPLAY ALL CLASSES OF SHIPS, THAT HAVE NUMBER OF GUNS DIFFERENT FROM 8 AND 12
-            SELECT * FROM CLASSES 
-            WHERE NUMGUNS NOT IN (8,12)
-
-            --3.4. DISPLAY ALL SHIPS THAT WERE LAUNCHED BEFORE 1920 OR AFTER 1940, BUT NOT IN 1916
-            SELECT * FROM SHIPS
-            WHERE (LAUNCHED < 1920 OR LAUNCHED > 1940)
-            AND LAUNCHED <> 1916
-
-
-
-
-
-            --1.1. DISPLAY MOVIES THAT WERE NOT MADE BY 'MGM' AND ARE IN COLOR
-            --USE UPPER AND LOWER FUNCTIONS TO CAPTURE ALL RESULTS
-            SELECT * FROM MOVIE
-            WHERE UPPER(STUDIONAME) <> 'MGM'
-            AND LOWER(INCOLOR) = 'y'
-
-
-            --1.2 DISPLAY MOVIESTAR NAME IN THE FOLLOWING WAYS: ORIGINAL, IN UPPER, IN LOWER AND INITCAP MODES
-            --GIVE APPROPRIATE ALIASES
-            SELECT 
-            NAME, 
-            UPPER(NAME) AS UPPER_NAME, 
-            LOWER(NAME) AS LOWER_NAME, 
-            INITCAP(NAME) AS INITCAP_NAME
-            FROM MOVIESTAR
-
-            --1.3 DISPLAY THE FIRST 5 LETTERS OF THE MOVIE TITELS IN TABLE MOVIE
-            SELECT TITLE, SUBSTR(TITLE, 1,5)
-            FROM MOVIE
-
-            --1.4 DISPLAY THE LAST 5 LETTERS OF THE MOVIE TITELS IN TABLE MOVIE
-            SELECT TITLE, SUBSTR(TITLE, -5)
-            FROM MOVIE
-
-            --1.5 DISPLAY 3 LETTERS, STARTING FROM POSITION 10, OF THE MOVIE TITELS IN TABLE MOVIE
-            SELECT TITLE, SUBSTR(TITLE, 10, 3)
-            FROM MOVIE
-
-            --1.6. CALCULATE THE LENGTH OF MOVIETITLES IN TABLE STARSIN
-            SELECT MOVIETITLE, LENGTH(MOVIETITLE) AS LENGTH
-            FROM STARSIN
-
-            --2.1 CHECK IF FIELD TYPE IN TABLE PRODUCT CONTAINS CAPITAL 'P'
-            SELECT TYPE, INSTR(TYPE,'P')
-            FROM PRODUCT
-
-            --2.2 CHECK IF FIELD TYPE IN TABLE PRODUCT CONTAINS 'P', INCLUDING 'p'
-            SELECT TYPE, INSTR(UPPER(TYPE),'P')
-            FROM PRODUCT
-
-            --2.3. DISPLAY MODEL FROM PC WITH 8 DIGITS BY ADDING '0' TO THE LEFT
-            SELECT MODEL, LPAD(MODEL, 8, 0) AS LPAD_MODEL
-            FROM PC
-
-            --2.4. DISPLAY TYPE FROM PRINTER WITH 8 DIGITS BY ADDING '*' TO THE RIGHT
-            SELECT RPAD(TYPE, 8, '*') AS RPAD_TYPE
-            FROM PRINTER
-
-            --2.5. REPLACE ALL 'P' IN FIELD TYPE, TABLE PRODUCT WITH '0'
-            SELECT TYPE, INITCAP(REPLACE(UPPER(TYPE),'P', '0'))
-            FROM PRODUCT
-
-            --2.6 FOR TABLE LAPTOP, FIELD SCREEN, REMOVE ALL ONES
-            SELECT SCREEN, TRIM(1 FROM SCREEN) 
-            FROM LAPTOP
-
-            --2.7 DISPLAY THE PRICE OF PRINTER ROUNDED TO 2 DECIMALS, A WHOLE NUMBER AND 100
-            SELECT PRICE, ROUND(PRICE, 2), ROUND(PRICE, 0), ROUND(PRICE, -2)
-            FROM PRINTER
-
-            SELECT 15.8367, ROUND(15.8367, 2), ROUND(15.8367, 0), ROUND(15.8367, -1)
-            FROM DUAL
-
-            --3.1. DISPLAY THE LAUNCH YEAR, ROUNDED TO 10 FOR SHIPS, WHOSE LAUNCH YEAR CONTAINS 7, SORT BY LAUNCHED
-            SELECT LAUNCHED, ROUND(LAUNCHED, -1)
-            FROM SHIPS
-            WHERE INSTR(LAUNCHED,7)<>0 
-            ORDER BY LAUNCHED
-
-            --3.2. DISPLAY THE LAUNCH YEAR, TRUNCATED TO 10 FOR SHIPS, WHOSE LAUNCH YEAR CONTAINS 7, SORT BY LAUNCHED
-            SELECT LAUNCHED, TRUNC(LAUNCHED, -1)
-            FROM SHIPS
-            WHERE INSTR(LAUNCHED,7)<>0 
-            ORDER BY LAUNCHED
-
-            --3.3. CALCULATE THE RESUDUAL OF DISPLACEMENT DIVIDED BY 42 - TABLE CLASSES
-            SELECT DISPLACEMENT , MOD(DISPLACEMENT, 42) AS MOD
-            FROM CLASSES
-
-            --3.4 CHECK IF THE NUMBER OF GUNS IS ODD OR EVEN - TABLE CLASSES
-            SELECT 
-            NUMGUNS, 
-            MOD(NUMGUNS,2) AS MOD, 
-            CASE WHEN MOD(NUMGUNS,2) = 0 THEN 'CHETNO' ELSE 'NECHETNO' END AS ODD_EVEN
-            FROM CLASSES
-
-
-
-
-            --1.1. DISPLAY MALE ACTORS, BORN AFTER 1969
-            SELECT * FROM MOVIESTAR
-            WHERE BIRTHDATE > '01-JAN-1970'
-            AND GENDER = 'M'
-
-            --1.2. DISPLAY THE CURRENT DATE
-            SELECT SYSDATE FROM DUAL
-
-            --1.3. DISPLAY THE DATE AFTER 15 DAYS
-            SELECT SYSDATE+15 FROM DUAL
-
-            --1.4. DISPLAY THE NUMBER OF DATES TO NEXT CHRISTMAS
-            SELECT TRUNC(TO_DATE('25-DEC-2016','DD-MON-YYYY') - SYSDATE) DAYS_TO_CHISTMAS FROM DUAL
-
-            --1.4. DISPLAY THE NUMBER OF DATES TO NEXT CHRISTMAS
-            SELECT TRUNC(TO_DATE('25-DEC-2016','DD-MON-YYYY') - SYSDATE) DAYS_TO_CHISTMAS FROM DUAL
-
-            --1.5. DISPLAY THE AGE (YEARS) OF ALL ACTORS, TABLE MOVIESTAR
-            SELECT  ROUND((SYSDATE-BIRTHDATE)/365)|| ' YEARS ' AS AGE,  
-            MOVIESTAR.* FROM MOVIESTAR
-
-            --1.6. DISPLAY THE AGE (YEARS AND DAYS) OF ALL ACTORS, TABLE MOVIESTAR
-            SELECT  ROUND((SYSDATE-BIRTHDATE)/365)|| ' YEARS '|| ROUND(MOD(SYSDATE-BIRTHDATE,365),0)|| ' DAYS ' AGE,  
-            MOVIESTAR.* FROM MOVIESTAR
-
-            --1.7 HOW MANY DAYS TO A STAR'S BIRTHDATE?
-            SELECT 365-ROUND(MOD(SYSDATE-BIRTHDATE,365),0) AS DAYS_TO_BDAY, A.*
-            FROM MOVIESTAR A
-
-            --1.8. DISPLAY BIRTHDATES IN FORMAT 'DD Month YYYY'
-            SELECT TO_CHAR(BIRTHDATE, 'DD Month YYYY') from moviestar
-
-            --2.1. DISPLAY MODEL FROM TABLE PRINTER AS A NUMBER
-            SELECT MODEL, TO_NUMBER(MODEL) FROM PRINTER
-
-            --2.2. DISPLAY THE SUM OF ALL MODELS 
-            SELECT SUM(MODEL), SUM(TO_NUMBER(MODEL)) FROM PRINTER
-
-            --2.3. DISPLAY 1-ST JUNE 1990 AS A DATE
-            SELECT TO_DATE('01-06-2016','DD-MM-YYYY') DT FROM DUAL
-
-            --2.4. DISPLAY PRICE LIKE STRING, WITH A DOLLAR SIGN, TWO DECIMALS AND THOUSAND SEPARATOR 
-            SELECT TO_CHAR(PRICE,'$99,999.00') NEW_PRICE FROM PC
-
-            --3.1. HOW MANY MONTHS BETWEEN '28-JAN-2013' AND '12-JUN-2016'
-            SELECT  TRUNC(MONTHS_BETWEEN('28-JAN-2013','12-JUN-2016')) MONTHS FROM DUAL
-
-            --3.2 ADD 50 MONTHS TO DATES IN BATTLES
-            SELECT A.*, ADD_MONTHS(DATES,50)
-            FROM BATTLES a
-
-            --3.3. NEXT MONDAY AFTER EACH BATTLE
-            SELECT A.*, NEXT_DAY(DATES,'MONDAY')
-            FROM BATTLES a
-
-            --3.4. LAST DAY OF MONTH FOR EACH BATTLE
-            SELECT A.*, LAST_DAY(DATES)
-            FROM BATTLES a
-
-
-
-
-            --1. SCHEMA MOVIE
-            --1.1. DISPLAY TITLE AND YEAR OF MOVIES THAT WERE MADE IN 1980
-            SELECT TITLE, YEAR 
-            FROM MOVIE 
-            WHERE YEAR = 1980
-
-            --1.2. DISPLAY MOVIES THAT WERE MADE AFTER 1975 AND LENGHT IS LESS THAN 120 MINUTES
-            SELECT * FROM MOVIE
-            WHERE YEAR > 1975
-            AND LENGTH < 120
-
-            --1.3. DISPLAY MOVIES THAT WERE MADE IN 1980 OR AFTER 1980 AND ARE IN COLOR
-            SELECT * FROM MOVIE
-            WHERE YEAR >= 1980
-            AND UPPER(INCOLOR) = 'Y'
-
-            --1.4. DISPLAY FEMALE ACTRORS THAT WERE BORN BEFORE 1980
-            SELECT * FROM MOVIESTAR 
-            WHERE BIRTHDATE < '01-JAN-1980'
-            AND GENDER = 'F'
-
-            --1.5. FROM TABLE STARSIN DISPLAY ALL MOVIES THAT WERE NOT MADE IN 1977
-            SELECT * FROM STARSIN 
-            WHERE MOVIEYEAR <> 1977
-
-            --1.6. DISPLAY ALL ACTORS, WHO WERE BORN IN 1977
-            SELECT * FROM MOVIESTAR
-            WHERE BIRTHDATE BETWEEN '01-JAN-1977' AND '31-DEC-1977'
-
-            --1.7. DISPLAY ALL MOVIES WHERE LENGTH IS NULL
-            SELECT * FROM MOVIE
-            WHERE LENGTH IS NULL
-
-            --2. SCHEMA PC
-            --2.1. DISPLAY ALL PRODUCTS THAT ARE NOT PC AND MAKER IS ONE OF A, B, C
-            SELECT * FROM PRODUCT 
-            WHERE MAKER IN ('A','B','C')
-            AND TYPE != 'PC'
-
-            --2.2. DISPLAY ALL PCs WHOSE PRICE IS BETWEEN 600 AND 1200
-            SELECT * FROM PC 
-            WHERE PRICE BETWEEN 600 AND 1200
-
-            --2.3. DISPLAY ALL PCs WHOSE PRICE IS BIGGER THAN 600 AND LESS THAN 1200
-            SELECT * FROM PC 
-            WHERE PRICE > 600 AND PRICE < 1200
-
-            --2.4. DISPLAY ALL LAPTOPS WHOSE RAM IS NOT 128 AND SCREEN IS 12 OR 15 INCHES
-            SELECT * FROM LAPTOP
-            WHERE RAM <> 128
-            AND SCREEN IN (12,15)
-
-            --3. SCHEMA SHIPS 
-            --3.1. DISPLAY ALL SHIPS WHERE THE 4TH LETTER IN CLASS = 'a'
-            SELECT * FROM SHIPS
-            WHERE CLASS LIKE '___a%'
-
-            --3.2. DISPLAY ALL SHIPS, WHOSE NAMES STAR WITH 'R' AND CLASS DOES NOT START WITH 'R'
-            SELECT * FROM SHIPS
-            WHERE NAME LIKE 'R%'
-            AND CLASS NOT LIKE 'R%'
-
-            --3.3 DISPLAY ALL CLASSES OF SHIPS, THAT HAVE NUMBER OF GUNS DIFFERENT FROM 8 AND 12
-            SELECT * FROM CLASSES 
-            WHERE NUMGUNS NOT IN (8,12)
-
-            --3.4. DISPLAY ALL SHIPS THAT WERE LAUNCHED BEFORE 1920 OR AFTER 1940, BUT NOT IN 1916
-            SELECT * FROM SHIPS
-            WHERE (LAUNCHED < 1920 OR LAUNCHED > 1940)
-            AND LAUNCHED <> 1916
-
-
-
-
-
-            --JOIN I
-
-            -- 1. Schema PC
-            --1.1. Return maker and speed of those laptops with hd >9 GB. Apply NATURAL join
-            SELECT maker, speed
-            FROM product NATURAL JOIN laptop
-            WHERE  hd > 9;
-            
-            --1.2. Return maker and speed of those laptops with hd >9 GB. Apply Join with USING clause
-            SELECT maker, speed
-            FROM product JOIN laptop
-            USING (model)
-            WHERE  hd > 9;
-            
-            --1.3. Return maker and speed of those laptops with hd >9 GB. Apply Join with ON clause
-            SELECT maker, speed
-            FROM product JOIN laptop
-            ON product.model = laptop.model 
-            WHERE  hd > 9;
-            
-            --1.4. The size of all HD that are present in more than one PC - Selfjoin
-            SELECT DISTINCT pc1.hd
-            FROM pc pc1, pc pc2
-            where pc1.code<>pc2.code and pc1.hd=pc2.hd
-            order by pc1.hd;
-
-            --3 times
-            SELECT DISTINCT pc1.hd
-            FROM pc  pc1, pc pc2, pc pc3
-            where pc1.code<>pc2.code and pc1.code<>pc3.code and pc2.code<>pc3.code
-            and pc1.hd=pc2.hd and pc2.hd=pc3.hd
-            order by pc1.hd;
-
-            -- 2. Schema Movies 
-            
-            --2.1.  Names of actors that took part in �Terms of Endearment� - INNER JOIN
-            SELECT A.starname, B.gender
-            FROM starsin A JOIN moviestar B
-            ON A.starname = B.name
-            WHERE A.movietitle = 'Terms of Endearment'
-            AND B.gender = 'M';
-
-            --2.2.	Name of the producer of �Star Wars� and all other movies that he produced JOIN
-            -- Option 1
-            SELECT title, t.name
-            FROM    movie m
-                JOIN
-                    (SELECT name, cert#
-                        FROM movieexec
-                        WHERE cert# IN (SELECT producerc#
-                                        FROM movie
-                                        WHERE title = 'Star Wars')) t
-                ON m.producerc# = t.cert#;
-
-            -- Option 2
-
-            SELECT title, name
-            FROM movie m JOIN movieexec me ON m.producerc# = me.cert#
-            WHERE me.cert# IN (SELECT producerc#
-                                FROM movie
-                                WHERE title = 'Star Wars');
-
-            --2.3.	Names of producers, that produced the movies with �Harrison Ford� 
-            SELECT DISTINCT me.name
-            FROM movie m
-                JOIN starsin s
-                    ON m.title = s.movietitle AND m.year = s.movieyear
-                JOIN movieexec me
-                    ON m.producerc# = me.cert#
-            WHERE starname = 'Harrison Ford';
-
-            
-            --2.4.	Name of studio and names of actors, who participated in movies from that studio, order by studio name. 
-            SELECT DISTINCT s.name, si.starname
-                FROM studio s
-                    JOIN movie m
-                        ON s.name = m.studioname
-                    JOIN starsin si
-                        ON m.title = si.movietitle AND m.year = si.movieyear
-            ORDER BY s.name;
-
-
-            
-            --2.5.	Names of actors, who participated in movies with biggest networth.
-
-            SELECT si.starname, t.networth, m.title
-            FROM starsin si
-                JOIN movie m
-                    ON si.movietitle = m.title AND si.movieyear = m.year
-                JOIN (SELECT cert#, networth
-                        FROM movieexec
-                        WHERE networth >= ALL (SELECT networth FROM movieexec)) t
-                    ON m.producerc# = t.cert#;
-
-            --3. Schema SHIPS
-            --3.1. Display names of ships that have displacement > 35000 Natural Join
-            SELECT s.name
-            FROM ships s natural join classes c
-            WHERE  c.displacement > 35000;
-            
-            --3.2. Display names of ships that have displacement > 35000 Using
-            SELECT s.name
-            FROM ships s join classes c
-            using(class) 
-            where c.displacement > 35000;
-            
-            --3.3. Display names of ships that have displacement > 35000 On
-            SELECT s.name
-            FROM ships s join classes c
-            using(class) 
-            where c.displacement > 35000;
-
-            --3.4. Display name, displacement, numguns of all ships that took part in battle �Guadalcanal� 
-            SELECT s.name, c.displacement, c.numguns
-            FROM ships s, classes c, outcomes o
-            WHERE o.battle = 'Guadalcanal' AND o.ship = s.name AND c.class = s.class;
-
-
-            --3.5. Display the names of those countries that have ships from types �bb� and  �bc� 
-            -- option 1
-            SELECT c1.country, c1.TYPE, c2.TYPE
-            FROM classes c1, classes c2
-            WHERE c1.country = c2.country AND c1.TYPE = 'bb' AND c2.TYPE = 'bc';
-
-            --3.6. Display the names of battles with 3 ships from one country
-            SELECT DISTINCT o1.battle
-            FROM classes c1,
-                ships s1,
-                outcomes o1,
-                classes c2,
-                ships s2,
-                outcomes o2,
-                classes c3,
-                ships s3,
-                outcomes o3
-            WHERE     c1.class = s1.class
-                AND s1.name = o1.ship
-                AND c2.class = s2.class
-                AND s2.name = o2.ship
-                AND c3.class = s3.class
-                AND s3.name = o3.ship
-                AND c1.country = c2.country
-                AND c1.country = c3.country
-                AND o1.battle = o2.battle
-                AND o1.battle = o3.battle
-                AND s1.name <> s2.name
-                AND s1.name <> s3.name
-                AND s2.name <> s3.name;
-
-
-
-
-
-                --1.1.  Names of actors that took part in �Terms of Endearment� USE INTERSECT 
-            SELECT starname
-            FROM starsin
-            WHERE movietitle = 'Terms of Endearment'
-            INTERSECT
-            SELECT name
-            FROM moviestar
-            WHERE gender = 'M';
-
-            --1.2.	Names of actors that took part in �MGM� movies in 1995 - JOIN
-            SELECT starname
-            FROM starsin JOIN movie
-            ON movietitle = title
-            WHERE     studioname = 'MGM'
-                AND year = 1995
-                AND year = movieyear;
-
-
-            --1.3.	Name of the president of �MGM�: JOIN
-            SELECT DISTINCT name
-            FROM movie JOIN movieexec
-            ON producerc# = cert# AND studioname = 'MGM';
-
-
-            --1.4.	All moves with lenght > than the lenght of �Gone With the Wind�: SELFJOIN
-            SELECT *
-            FROM movie m1, movie m2
-            WHERE     m2.title = 'Gone With the Wind'
-                AND m1.year <> m2.year
-                AND m1.title <> m2.title
-                AND m1.LENGTH < m2.LENGTH;
-
-            --1.5.	The names of those producers whose networth is greater than �Mery Griffin�: SELFJOIN
-            SELECT *
-            FROM movieexec me1, movieexec me2
-            WHERE     me1.networth > me2.networth
-                AND me1.cert# <> me2.cert#
-                AND me2.name = 'Mery Griffin';
-                
-            --1.6.	Names of actors, who didn't participate in a single movie (use a join) LEFT JOIN
-            SELECT ms.name, si.movietitle
-            FROM moviestar ms LEFT JOIN starsin si ON ms.name = si.starname
-            WHERE si.movietitle IS NULL;
-
-            --2. Schema PC
-
-            --2.1. Display maker, model and type of products, that are not being sold (they are missing in tables PC, Laptop, Printer)
-            --Union
-            SELECT p.*
-            FROM product p LEFT JOIN pc ON p.model = pc.model
-            WHERE TYPE = 'PC' AND code IS NULL
-            UNION
-            SELECT p.*
-            FROM product p LEFT JOIN printer pp ON p.model = pp.model
-            WHERE p.TYPE = 'Printer' AND code IS NULL
-            UNION
-            SELECT p.*
-            FROM product p LEFT JOIN laptop l ON p.model = l.model
-            WHERE TYPE = 'Laptop' AND code IS NULL;
-
-            --2.2. Model and price of all product from maker  �B� - Union
-            SELECT DISTINCT p.model, l.price AS Price, p.TYPE
-            FROM product p, laptop l
-            WHERE maker = 'B' AND p.model = l.model
-            UNION
-            SELECT DISTINCT p.model, pc.price AS Price, p.TYPE
-            FROM product p, pc
-            WHERE maker = 'B' AND p.model = pc.model
-            UNION
-            SELECT p.model, pr.price AS Price, p.TYPE
-            FROM product p, printer pr
-            WHERE maker = 'B' AND p.model = pr.model;
-
-            --2.3. Display all couples of PC models, that have the same frequency and memory. Selfjoin
-            Display them only once  (i, j), but not (j, i) 
-            SELECT m1.model, m2.model
-            FROM pc m1, pc m2
-            WHERE m1.speed = m2.speed AND m1.ram = m2.ram AND m1.model > m2.model;
-
-            --2.4. Display the makers of at least 2 different PCs with speed > 400. 
-            SELECT DISTINCT p1.maker, p1.model
-            FROM product p1, product p2, pc  pc1, pc pc2
-            where 
-                p1.maker=p2.maker  
-            and pc1.model=p1.model  
-            and pc2.model=p2.model
-            and p1.model<>p2.model 
-            and pc1.speed>400
-            and pc2.speed>400;
-
-            --3. Schema SHIPS
-            --3.1. Display the names of those countries that have ships from types �bb� and  �bc� 
-            -- Intersect
-            (SELECT country
-            FROM classes
-            WHERE TYPE = 'bb')
-            INTERSECT
-            (SELECT country
-            FROM classes
-            WHERE TYPE = 'bc');
-            
-            --3.2. Display the names of ships, that were damaged in a battle, but then took part in another battle. 
-            SELECT o1.ship
-            FROM outcomes o1,
-                battles b1,
-                outcomes o2,
-                battles b2
-            WHERE     o1.battle = b1.name
-                AND o2.battle = b2.name
-                AND o1.ship = o2.ship
-                AND b1.dates < b2.dates
-                AND o1.result = 'damaged';
-
-            --3.3. Display all available information for every ship, including its class. Exclude results for classes, that have no ships. 
-            SELECT *
-            FROM ships s RIGHT JOIN classes c ON s.class = c.class
-            WHERE s.name IS NOT NULL;
-
-            --3.4. Repeat 3.1 but include classes, that have no ships, but ships with same name exist
-            SELECT *
-            FROM ships s RIGHT JOIN classes c ON s.class = c.class
-            WHERE s.name IS NOT NULL
-            UNION
-            SELECT *
-            FROM ships s RIGHT JOIN classes c ON s.class = c.class
-            WHERE s.name IS NULL AND c.class IN (SELECT name FROM ships);
-
-            --3.5. For every country display ship names, that never participated in a battle.  
-            SELECT DISTINCT c.country, s.name
-                FROM classes c
-                    JOIN ships s
-                        ON c.class = s.class
-                    LEFT JOIN outcomes o
-                        ON s.name = o.ship
-            WHERE o.ship IS NULL
-            ORDER BY c.country;
-
+<br />
+<br />            --1. SCHEMA MOVIE
+<br />            --1.1. DISPLAY TITLE AND YEAR OF MOVIES THAT WERE MADE IN 1980
+<br />            SELECT TITLE, YEAR 
+<br />            FROM MOVIE 
+<br />            WHERE YEAR = 1980
+<br />
+<br />            --1.2. DISPLAY MOVIES THAT WERE MADE AFTER 1975 AND LENGHT IS LESS THAN 120 MINUTES
+<br />            SELECT * FROM MOVIE
+<br />            WHERE YEAR > 1975
+<br />            AND LENGTH < 120
+<br />
+<br />            --1.3. DISPLAY MOVIES THAT WERE MADE IN 1980 OR AFTER 1980 AND ARE IN COLOR
+<br />            SELECT * FROM MOVIE
+<br />            WHERE YEAR >= 1980
+<br />            AND UPPER(INCOLOR) = 'Y'
+<br />
+<br />            --1.4. DISPLAY FEMALE ACTRORS THAT WERE BORN BEFORE 1980
+<br />            SELECT * FROM MOVIESTAR 
+<br />            WHERE BIRTHDATE < '01-JAN-1980'
+<br />            AND GENDER = 'F'
+<br />
+<br />            --1.5. FROM TABLE STARSIN DISPLAY ALL MOVIES THAT WERE NOT MADE IN 1977
+<br />            SELECT * FROM STARSIN 
+<br />            WHERE MOVIEYEAR <> 1977
+<br />
+<br />            --1.6. DISPLAY ALL ACTORS, WHO WERE BORN IN 1977
+<br />            SELECT * FROM MOVIESTAR
+<br />            WHERE BIRTHDATE BETWEEN '01-JAN-1977' AND '31-DEC-1977'
+<br />
+<br />            --1.7. DISPLAY ALL MOVIES WHERE LENGTH IS NULL
+<br />            SELECT * FROM MOVIE
+<br />            WHERE LENGTH IS NULL
+<br />
+<br />            --2. SCHEMA PC
+<br />            --2.1. DISPLAY ALL PRODUCTS THAT ARE NOT PC AND MAKER IS ONE OF A, B, C
+<br />            SELECT * FROM PRODUCT 
+<br />            WHERE MAKER IN ('A','B','C')
+<br />            AND TYPE != 'PC'
+<br />
+<br />            --2.2. DISPLAY ALL PCs WHOSE PRICE IS BETWEEN 600 AND 1200
+<br />            SELECT * FROM PC 
+<br />            WHERE PRICE BETWEEN 600 AND 1200
+<br />
+<br />            --2.3. DISPLAY ALL PCs WHOSE PRICE IS BIGGER THAN 600 AND LESS THAN 1200
+<br />            SELECT * FROM PC 
+<br />            WHERE PRICE > 600 AND PRICE < 1200
+<br />
+<br />            --2.4. DISPLAY ALL LAPTOPS WHOSE RAM IS NOT 128 AND SCREEN IS 12 OR 15 INCHES
+<br />            SELECT * FROM LAPTOP
+<br />            WHERE RAM <> 128
+<br />            AND SCREEN IN (12,15)
+<br />
+<br />            --3. SCHEMA SHIPS 
+<br />            --3.1. DISPLAY ALL SHIPS WHERE THE 4TH LETTER IN CLASS = 'a'
+<br />            SELECT * FROM SHIPS
+<br />            WHERE CLASS LIKE '___a%'
+<br />
+<br />            --3.2. DISPLAY ALL SHIPS, WHOSE NAMES STAR WITH 'R' AND CLASS DOES NOT START WITH 'R'
+<br />            SELECT * FROM SHIPS
+<br />            WHERE NAME LIKE 'R%'
+<br />            AND CLASS NOT LIKE 'R%'
+<br />
+<br />            --3.3 DISPLAY ALL CLASSES OF SHIPS, THAT HAVE NUMBER OF GUNS DIFFERENT FROM 8 AND 12
+<br />            SELECT * FROM CLASSES 
+<br />            WHERE NUMGUNS NOT IN (8,12)
+<br />
+<br />            --3.4. DISPLAY ALL SHIPS THAT WERE LAUNCHED BEFORE 1920 OR AFTER 1940, BUT NOT IN 1916
+<br />            SELECT * FROM SHIPS
+<br />            WHERE (LAUNCHED < 1920 OR LAUNCHED > 1940)
+<br />            AND LAUNCHED <> 1916
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />            --1.1. DISPLAY MOVIES THAT WERE NOT MADE BY 'MGM' AND ARE IN COLOR
+<br />            --USE UPPER AND LOWER FUNCTIONS TO CAPTURE ALL RESULTS
+<br />            SELECT * FROM MOVIE
+<br />            WHERE UPPER(STUDIONAME) <> 'MGM'
+<br />            AND LOWER(INCOLOR) = 'y'
+<br />
+<br />
+<br />            --1.2 DISPLAY MOVIESTAR NAME IN THE FOLLOWING WAYS: ORIGINAL, IN UPPER, IN LOWER AND INITCAP MODES
+<br />            --GIVE APPROPRIATE ALIASES
+<br />            SELECT 
+<br />            NAME, 
+<br />            UPPER(NAME) AS UPPER_NAME, 
+<br />            LOWER(NAME) AS LOWER_NAME, 
+<br />            INITCAP(NAME) AS INITCAP_NAME
+<br />            FROM MOVIESTAR
+<br />
+<br />            --1.3 DISPLAY THE FIRST 5 LETTERS OF THE MOVIE TITELS IN TABLE MOVIE
+<br />            SELECT TITLE, SUBSTR(TITLE, 1,5)
+<br />            FROM MOVIE
+<br />
+<br />            --1.4 DISPLAY THE LAST 5 LETTERS OF THE MOVIE TITELS IN TABLE MOVIE
+<br />            SELECT TITLE, SUBSTR(TITLE, -5)
+<br />            FROM MOVIE
+<br />
+<br />            --1.5 DISPLAY 3 LETTERS, STARTING FROM POSITION 10, OF THE MOVIE TITELS IN TABLE MOVIE
+<br />            SELECT TITLE, SUBSTR(TITLE, 10, 3)
+<br />            FROM MOVIE
+<br />
+<br />            --1.6. CALCULATE THE LENGTH OF MOVIETITLES IN TABLE STARSIN
+<br />            SELECT MOVIETITLE, LENGTH(MOVIETITLE) AS LENGTH
+<br />            FROM STARSIN
+<br />
+<br />            --2.1 CHECK IF FIELD TYPE IN TABLE PRODUCT CONTAINS CAPITAL 'P'
+<br />            SELECT TYPE, INSTR(TYPE,'P')
+<br />            FROM PRODUCT
+<br />
+<br />            --2.2 CHECK IF FIELD TYPE IN TABLE PRODUCT CONTAINS 'P', INCLUDING 'p'
+<br />            SELECT TYPE, INSTR(UPPER(TYPE),'P')
+<br />            FROM PRODUCT
+<br />
+<br />            --2.3. DISPLAY MODEL FROM PC WITH 8 DIGITS BY ADDING '0' TO THE LEFT
+<br />            SELECT MODEL, LPAD(MODEL, 8, 0) AS LPAD_MODEL
+<br />            FROM PC
+<br />
+<br />            --2.4. DISPLAY TYPE FROM PRINTER WITH 8 DIGITS BY ADDING '*' TO THE RIGHT
+<br />            SELECT RPAD(TYPE, 8, '*') AS RPAD_TYPE
+<br />            FROM PRINTER
+<br />
+<br />            --2.5. REPLACE ALL 'P' IN FIELD TYPE, TABLE PRODUCT WITH '0'
+<br />            SELECT TYPE, INITCAP(REPLACE(UPPER(TYPE),'P', '0'))
+<br />            FROM PRODUCT
+<br />
+<br />            --2.6 FOR TABLE LAPTOP, FIELD SCREEN, REMOVE ALL ONES
+<br />            SELECT SCREEN, TRIM(1 FROM SCREEN) 
+<br />            FROM LAPTOP
+<br />
+<br />            --2.7 DISPLAY THE PRICE OF PRINTER ROUNDED TO 2 DECIMALS, A WHOLE NUMBER AND 100
+<br />            SELECT PRICE, ROUND(PRICE, 2), ROUND(PRICE, 0), ROUND(PRICE, -2)
+<br />            FROM PRINTER
+<br />
+<br />            SELECT 15.8367, ROUND(15.8367, 2), ROUND(15.8367, 0), ROUND(15.8367, -1)
+<br />            FROM DUAL
+<br />
+<br />            --3.1. DISPLAY THE LAUNCH YEAR, ROUNDED TO 10 FOR SHIPS, WHOSE LAUNCH YEAR CONTAINS 7, SORT BY LAUNCHED
+<br />            SELECT LAUNCHED, ROUND(LAUNCHED, -1)
+<br />            FROM SHIPS
+<br />            WHERE INSTR(LAUNCHED,7)<>0 
+<br />            ORDER BY LAUNCHED
+<br />
+<br />            --3.2. DISPLAY THE LAUNCH YEAR, TRUNCATED TO 10 FOR SHIPS, WHOSE LAUNCH YEAR CONTAINS 7, SORT BY LAUNCHED
+<br />            SELECT LAUNCHED, TRUNC(LAUNCHED, -1)
+<br />            FROM SHIPS
+<br />            WHERE INSTR(LAUNCHED,7)<>0 
+<br />            ORDER BY LAUNCHED
+<br />
+<br />            --3.3. CALCULATE THE RESUDUAL OF DISPLACEMENT DIVIDED BY 42 - TABLE CLASSES
+<br />            SELECT DISPLACEMENT , MOD(DISPLACEMENT, 42) AS MOD
+<br />            FROM CLASSES
+<br />
+<br />            --3.4 CHECK IF THE NUMBER OF GUNS IS ODD OR EVEN - TABLE CLASSES
+<br />            SELECT 
+<br />            NUMGUNS, 
+<br />            MOD(NUMGUNS,2) AS MOD, 
+<br />            CASE WHEN MOD(NUMGUNS,2) = 0 THEN 'CHETNO' ELSE 'NECHETNO' END AS ODD_EVEN
+<br />            FROM CLASSES
+<br />
+<br />
+<br />
+<br />
+<br />            --1.1. DISPLAY MALE ACTORS, BORN AFTER 1969
+<br />            SELECT * FROM MOVIESTAR
+<br />            WHERE BIRTHDATE > '01-JAN-1970'
+<br />            AND GENDER = 'M'
+<br />
+<br />            --1.2. DISPLAY THE CURRENT DATE
+<br />            SELECT SYSDATE FROM DUAL
+<br />
+<br />            --1.3. DISPLAY THE DATE AFTER 15 DAYS
+<br />            SELECT SYSDATE+15 FROM DUAL
+<br />
+<br />            --1.4. DISPLAY THE NUMBER OF DATES TO NEXT CHRISTMAS
+<br />            SELECT TRUNC(TO_DATE('25-DEC-2016','DD-MON-YYYY') - SYSDATE) DAYS_TO_CHISTMAS FROM DUAL
+<br />
+<br />            --1.4. DISPLAY THE NUMBER OF DATES TO NEXT CHRISTMAS
+<br />            SELECT TRUNC(TO_DATE('25-DEC-2016','DD-MON-YYYY') - SYSDATE) DAYS_TO_CHISTMAS FROM DUAL
+<br />
+<br />            --1.5. DISPLAY THE AGE (YEARS) OF ALL ACTORS, TABLE MOVIESTAR
+<br />            SELECT  ROUND((SYSDATE-BIRTHDATE)/365)|| ' YEARS ' AS AGE,  
+<br />            MOVIESTAR.* FROM MOVIESTAR
+<br />
+<br />            --1.6. DISPLAY THE AGE (YEARS AND DAYS) OF ALL ACTORS, TABLE MOVIESTAR
+<br />            SELECT  ROUND((SYSDATE-BIRTHDATE)/365)|| ' YEARS '|| ROUND(MOD(SYSDATE-BIRTHDATE,365),0)|| ' DAYS ' AGE,  
+<br />            MOVIESTAR.* FROM MOVIESTAR
+<br />
+<br />            --1.7 HOW MANY DAYS TO A STAR'S BIRTHDATE?
+<br />            SELECT 365-ROUND(MOD(SYSDATE-BIRTHDATE,365),0) AS DAYS_TO_BDAY, A.*
+<br />            FROM MOVIESTAR A
+<br />
+<br />            --1.8. DISPLAY BIRTHDATES IN FORMAT 'DD Month YYYY'
+<br />            SELECT TO_CHAR(BIRTHDATE, 'DD Month YYYY') from moviestar
+<br />
+<br />            --2.1. DISPLAY MODEL FROM TABLE PRINTER AS A NUMBER
+<br />            SELECT MODEL, TO_NUMBER(MODEL) FROM PRINTER
+<br />
+<br />            --2.2. DISPLAY THE SUM OF ALL MODELS 
+<br />            SELECT SUM(MODEL), SUM(TO_NUMBER(MODEL)) FROM PRINTER
+<br />
+<br />            --2.3. DISPLAY 1-ST JUNE 1990 AS A DATE
+<br />            SELECT TO_DATE('01-06-2016','DD-MM-YYYY') DT FROM DUAL
+<br />
+<br />            --2.4. DISPLAY PRICE LIKE STRING, WITH A DOLLAR SIGN, TWO DECIMALS AND THOUSAND SEPARATOR 
+<br />            SELECT TO_CHAR(PRICE,'$99,999.00') NEW_PRICE FROM PC
+<br />
+<br />            --3.1. HOW MANY MONTHS BETWEEN '28-JAN-2013' AND '12-JUN-2016'
+<br />            SELECT  TRUNC(MONTHS_BETWEEN('28-JAN-2013','12-JUN-2016')) MONTHS FROM DUAL
+<br />
+<br />            --3.2 ADD 50 MONTHS TO DATES IN BATTLES
+<br />            SELECT A.*, ADD_MONTHS(DATES,50)
+<br />            FROM BATTLES a
+<br />
+<br />            --3.3. NEXT MONDAY AFTER EACH BATTLE
+<br />            SELECT A.*, NEXT_DAY(DATES,'MONDAY')
+<br />            FROM BATTLES a
+<br />
+<br />            --3.4. LAST DAY OF MONTH FOR EACH BATTLE
+<br />            SELECT A.*, LAST_DAY(DATES)
+<br />            FROM BATTLES a
+<br />
+<br />
+<br />
+<br />
+<br />            --1. SCHEMA MOVIE
+<br />            --1.1. DISPLAY TITLE AND YEAR OF MOVIES THAT WERE MADE IN 1980
+<br />            SELECT TITLE, YEAR 
+<br />            FROM MOVIE 
+<br />            WHERE YEAR = 1980
+<br />
+<br />            --1.2. DISPLAY MOVIES THAT WERE MADE AFTER 1975 AND LENGHT IS LESS THAN 120 MINUTES
+<br />            SELECT * FROM MOVIE
+<br />            WHERE YEAR > 1975
+<br />            AND LENGTH < 120
+<br />
+<br />            --1.3. DISPLAY MOVIES THAT WERE MADE IN 1980 OR AFTER 1980 AND ARE IN COLOR
+<br />            SELECT * FROM MOVIE
+<br />            WHERE YEAR >= 1980
+<br />            AND UPPER(INCOLOR) = 'Y'
+<br />
+<br />            --1.4. DISPLAY FEMALE ACTRORS THAT WERE BORN BEFORE 1980
+<br />            SELECT * FROM MOVIESTAR 
+<br />            WHERE BIRTHDATE < '01-JAN-1980'
+<br />            AND GENDER = 'F'
+<br />
+<br />            --1.5. FROM TABLE STARSIN DISPLAY ALL MOVIES THAT WERE NOT MADE IN 1977
+<br />            SELECT * FROM STARSIN 
+<br />            WHERE MOVIEYEAR <> 1977
+<br />
+<br />            --1.6. DISPLAY ALL ACTORS, WHO WERE BORN IN 1977
+<br />            SELECT * FROM MOVIESTAR
+<br />            WHERE BIRTHDATE BETWEEN '01-JAN-1977' AND '31-DEC-1977'
+<br />
+<br />            --1.7. DISPLAY ALL MOVIES WHERE LENGTH IS NULL
+<br />            SELECT * FROM MOVIE
+<br />            WHERE LENGTH IS NULL
+<br />
+<br />            --2. SCHEMA PC
+<br />            --2.1. DISPLAY ALL PRODUCTS THAT ARE NOT PC AND MAKER IS ONE OF A, B, C
+<br />            SELECT * FROM PRODUCT 
+<br />            WHERE MAKER IN ('A','B','C')
+<br />            AND TYPE != 'PC'
+<br />
+<br />            --2.2. DISPLAY ALL PCs WHOSE PRICE IS BETWEEN 600 AND 1200
+<br />            SELECT * FROM PC 
+<br />            WHERE PRICE BETWEEN 600 AND 1200
+<br />
+<br />            --2.3. DISPLAY ALL PCs WHOSE PRICE IS BIGGER THAN 600 AND LESS THAN 1200
+<br />            SELECT * FROM PC 
+<br />            WHERE PRICE > 600 AND PRICE < 1200
+<br />
+<br />            --2.4. DISPLAY ALL LAPTOPS WHOSE RAM IS NOT 128 AND SCREEN IS 12 OR 15 INCHES
+<br />            SELECT * FROM LAPTOP
+<br />            WHERE RAM <> 128
+<br />            AND SCREEN IN (12,15)
+<br />
+<br />            --3. SCHEMA SHIPS 
+<br />            --3.1. DISPLAY ALL SHIPS WHERE THE 4TH LETTER IN CLASS = 'a'
+<br />            SELECT * FROM SHIPS
+<br />            WHERE CLASS LIKE '___a%'
+<br />
+<br />            --3.2. DISPLAY ALL SHIPS, WHOSE NAMES STAR WITH 'R' AND CLASS DOES NOT START WITH 'R'
+<br />            SELECT * FROM SHIPS
+<br />            WHERE NAME LIKE 'R%'
+<br />            AND CLASS NOT LIKE 'R%'
+<br />
+<br />            --3.3 DISPLAY ALL CLASSES OF SHIPS, THAT HAVE NUMBER OF GUNS DIFFERENT FROM 8 AND 12
+<br />            SELECT * FROM CLASSES 
+<br />            WHERE NUMGUNS NOT IN (8,12)
+<br />
+<br />            --3.4. DISPLAY ALL SHIPS THAT WERE LAUNCHED BEFORE 1920 OR AFTER 1940, BUT NOT IN 1916
+<br />            SELECT * FROM SHIPS
+<br />            WHERE (LAUNCHED < 1920 OR LAUNCHED > 1940)
+<br />            AND LAUNCHED <> 1916
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />            --JOIN I
+<br />
+<br />            -- 1. Schema PC
+<br />            --1.1. Return maker and speed of those laptops with hd >9 GB. Apply NATURAL join
+<br />            SELECT maker, speed
+<br />            FROM product NATURAL JOIN laptop
+<br />            WHERE  hd > 9;
+<br />            
+<br />            --1.2. Return maker and speed of those laptops with hd >9 GB. Apply Join with USING clause
+<br />            SELECT maker, speed
+<br />            FROM product JOIN laptop
+<br />            USING (model)
+<br />            WHERE  hd > 9;
+<br />            
+<br />            --1.3. Return maker and speed of those laptops with hd >9 GB. Apply Join with ON clause
+<br />            SELECT maker, speed
+<br />            FROM product JOIN laptop
+<br />            ON product.model = laptop.model 
+<br />            WHERE  hd > 9;
+<br />            
+<br />            --1.4. The size of all HD that are present in more than one PC - Selfjoin
+<br />            SELECT DISTINCT pc1.hd
+<br />            FROM pc pc1, pc pc2
+<br />            where pc1.code<>pc2.code and pc1.hd=pc2.hd
+<br />            order by pc1.hd;
+<br />
+<br />            --3 times
+<br />            SELECT DISTINCT pc1.hd
+<br />            FROM pc  pc1, pc pc2, pc pc3
+<br />            where pc1.code<>pc2.code and pc1.code<>pc3.code and pc2.code<>pc3.code
+<br />            and pc1.hd=pc2.hd and pc2.hd=pc3.hd
+<br />            order by pc1.hd;
+<br />
+<br />            -- 2. Schema Movies 
+<br />            
+<br />            --2.1.  Names of actors that took part in �Terms of Endearment� - INNER JOIN
+<br />            SELECT A.starname, B.gender
+<br />            FROM starsin A JOIN moviestar B
+<br />            ON A.starname = B.name
+<br />            WHERE A.movietitle = 'Terms of Endearment'
+<br />            AND B.gender = 'M';
+<br />
+<br />            --2.2.	Name of the producer of �Star Wars� and all other movies that he produced JOIN
+<br />            -- Option 1
+<br />            SELECT title, t.name
+<br />            FROM    movie m
+<br />                JOIN
+<br />                    (SELECT name, cert#
+<br />                        FROM movieexec
+<br />                        WHERE cert# IN (SELECT producerc#
+<br />                                        FROM movie
+<br />                                        WHERE title = 'Star Wars')) t
+<br />                ON m.producerc# = t.cert#;
+<br />
+<br />            -- Option 2
+<br />
+<br />            SELECT title, name
+<br />            FROM movie m JOIN movieexec me ON m.producerc# = me.cert#
+<br />            WHERE me.cert# IN (SELECT producerc#
+<br />                                FROM movie
+<br />                                WHERE title = 'Star Wars');
+<br />
+<br />            --2.3.	Names of producers, that produced the movies with �Harrison Ford� 
+<br />            SELECT DISTINCT me.name
+<br />            FROM movie m
+<br />                JOIN starsin s
+<br />                    ON m.title = s.movietitle AND m.year = s.movieyear
+<br />                JOIN movieexec me
+<br />                    ON m.producerc# = me.cert#
+<br />            WHERE starname = 'Harrison Ford';
+<br />
+<br />            
+<br />            --2.4.	Name of studio and names of actors, who participated in movies from that studio, order by studio name. 
+<br />            SELECT DISTINCT s.name, si.starname
+<br />                FROM studio s
+<br />                    JOIN movie m
+<br />                        ON s.name = m.studioname
+<br />                    JOIN starsin si
+<br />                        ON m.title = si.movietitle AND m.year = si.movieyear
+<br />            ORDER BY s.name;
+<br />
+<br />
+<br />            
+<br />            --2.5.	Names of actors, who participated in movies with biggest networth.
+<br />
+<br />            SELECT si.starname, t.networth, m.title
+<br />            FROM starsin si
+<br />                JOIN movie m
+<br />                    ON si.movietitle = m.title AND si.movieyear = m.year
+<br />                JOIN (SELECT cert#, networth
+<br />                        FROM movieexec
+<br />                        WHERE networth >= ALL (SELECT networth FROM movieexec)) t
+<br />                    ON m.producerc# = t.cert#;
+<br />
+<br />            --3. Schema SHIPS
+<br />            --3.1. Display names of ships that have displacement > 35000 Natural Join
+<br />            SELECT s.name
+<br />            FROM ships s natural join classes c
+<br />            WHERE  c.displacement > 35000;
+<br />            
+<br />            --3.2. Display names of ships that have displacement > 35000 Using
+<br />            SELECT s.name
+<br />            FROM ships s join classes c
+<br />            using(class) 
+<br />            where c.displacement > 35000;
+<br />            
+<br />            --3.3. Display names of ships that have displacement > 35000 On
+<br />            SELECT s.name
+<br />            FROM ships s join classes c
+<br />            using(class) 
+<br />            where c.displacement > 35000;
+<br />
+<br />            --3.4. Display name, displacement, numguns of all ships that took part in battle �Guadalcanal� 
+<br />            SELECT s.name, c.displacement, c.numguns
+<br />            FROM ships s, classes c, outcomes o
+<br />            WHERE o.battle = 'Guadalcanal' AND o.ship = s.name AND c.class = s.class;
+<br />
+<br />
+<br />            --3.5. Display the names of those countries that have ships from types �bb� and  �bc� 
+<br />            -- option 1
+<br />            SELECT c1.country, c1.TYPE, c2.TYPE
+<br />            FROM classes c1, classes c2
+<br />            WHERE c1.country = c2.country AND c1.TYPE = 'bb' AND c2.TYPE = 'bc';
+<br />
+<br />            --3.6. Display the names of battles with 3 ships from one country
+<br />            SELECT DISTINCT o1.battle
+<br />            FROM classes c1,
+<br />                ships s1,
+<br />                outcomes o1,
+<br />                classes c2,
+<br />                ships s2,
+<br />                outcomes o2,
+<br />                classes c3,
+<br />                ships s3,
+<br />                outcomes o3
+<br />            WHERE     c1.class = s1.class
+<br />                AND s1.name = o1.ship
+<br />                AND c2.class = s2.class
+<br />                AND s2.name = o2.ship
+<br />                AND c3.class = s3.class
+<br />                AND s3.name = o3.ship
+<br />                AND c1.country = c2.country
+<br />                AND c1.country = c3.country
+<br />                AND o1.battle = o2.battle
+<br />                AND o1.battle = o3.battle
+<br />                AND s1.name <> s2.name
+<br />                AND s1.name <> s3.name
+<br />                AND s2.name <> s3.name;
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />                --1.1.  Names of actors that took part in �Terms of Endearment� USE INTERSECT 
+<br />            SELECT starname
+<br />            FROM starsin
+<br />            WHERE movietitle = 'Terms of Endearment'
+<br />            INTERSECT
+<br />            SELECT name
+<br />            FROM moviestar
+<br />            WHERE gender = 'M';
+<br />
+<br />            --1.2.	Names of actors that took part in �MGM� movies in 1995 - JOIN
+<br />            SELECT starname
+<br />            FROM starsin JOIN movie
+<br />            ON movietitle = title
+<br />            WHERE     studioname = 'MGM'
+<br />                AND year = 1995
+<br />                AND year = movieyear;
+<br />
+<br />
+<br />            --1.3.	Name of the president of �MGM�: JOIN
+<br />            SELECT DISTINCT name
+<br />            FROM movie JOIN movieexec
+<br />            ON producerc# = cert# AND studioname = 'MGM';
+<br />
+<br />
+<br />            --1.4.	All moves with lenght > than the lenght of �Gone With the Wind�: SELFJOIN
+<br />            SELECT *
+<br />            FROM movie m1, movie m2
+<br />            WHERE     m2.title = 'Gone With the Wind'
+<br />                AND m1.year <> m2.year
+<br />                AND m1.title <> m2.title
+<br />                AND m1.LENGTH < m2.LENGTH;
+<br />
+<br />            --1.5.	The names of those producers whose networth is greater than �Mery Griffin�: SELFJOIN
+<br />            SELECT *
+<br />            FROM movieexec me1, movieexec me2
+<br />            WHERE     me1.networth > me2.networth
+<br />                AND me1.cert# <> me2.cert#
+<br />                AND me2.name = 'Mery Griffin';
+<br />                
+<br />            --1.6.	Names of actors, who didn't participate in a single movie (use a join) LEFT JOIN
+<br />            SELECT ms.name, si.movietitle
+<br />            FROM moviestar ms LEFT JOIN starsin si ON ms.name = si.starname
+<br />            WHERE si.movietitle IS NULL;
+<br />
+<br />            --2. Schema PC
+<br />
+<br />            --2.1. Display maker, model and type of products, that are not being sold (they are missing in tables PC, Laptop, Printer)
+<br />            --Union
+<br />            SELECT p.*
+<br />            FROM product p LEFT JOIN pc ON p.model = pc.model
+<br />            WHERE TYPE = 'PC' AND code IS NULL
+<br />            UNION
+<br />            SELECT p.*
+<br />            FROM product p LEFT JOIN printer pp ON p.model = pp.model
+<br />            WHERE p.TYPE = 'Printer' AND code IS NULL
+<br />            UNION
+<br />            SELECT p.*
+<br />            FROM product p LEFT JOIN laptop l ON p.model = l.model
+<br />            WHERE TYPE = 'Laptop' AND code IS NULL;
+<br />
+<br />            --2.2. Model and price of all product from maker  �B� - Union
+<br />            SELECT DISTINCT p.model, l.price AS Price, p.TYPE
+<br />            FROM product p, laptop l
+<br />            WHERE maker = 'B' AND p.model = l.model
+<br />            UNION
+<br />            SELECT DISTINCT p.model, pc.price AS Price, p.TYPE
+<br />            FROM product p, pc
+<br />            WHERE maker = 'B' AND p.model = pc.model
+<br />            UNION
+<br />            SELECT p.model, pr.price AS Price, p.TYPE
+<br />            FROM product p, printer pr
+<br />            WHERE maker = 'B' AND p.model = pr.model;
+<br />
+<br />            --2.3. Display all couples of PC models, that have the same frequency and memory. Selfjoin
+<br />            Display them only once  (i, j), but not (j, i) 
+<br />            SELECT m1.model, m2.model
+<br />            FROM pc m1, pc m2
+<br />            WHERE m1.speed = m2.speed AND m1.ram = m2.ram AND m1.model > m2.model;
+<br />
+<br />            --2.4. Display the makers of at least 2 different PCs with speed > 400. 
+<br />            SELECT DISTINCT p1.maker, p1.model
+<br />            FROM product p1, product p2, pc  pc1, pc pc2
+<br />            where 
+<br />                p1.maker=p2.maker  
+<br />            and pc1.model=p1.model  
+<br />            and pc2.model=p2.model
+<br />            and p1.model<>p2.model 
+<br />            and pc1.speed>400
+<br />            and pc2.speed>400;
+<br />
+<br />            --3. Schema SHIPS
+<br />            --3.1. Display the names of those countries that have ships from types �bb� and  �bc� 
+<br />            -- Intersect
+<br />            (SELECT country
+<br />            FROM classes
+<br />            WHERE TYPE = 'bb')
+<br />            INTERSECT
+<br />            (SELECT country
+<br />            FROM classes
+<br />            WHERE TYPE = 'bc');
+<br />            
+<br />            --3.2. Display the names of ships, that were damaged in a battle, but then took part in another battle. 
+<br />            SELECT o1.ship
+<br />            FROM outcomes o1,
+<br />                battles b1,
+<br />                outcomes o2,
+<br />                battles b2
+<br />            WHERE     o1.battle = b1.name
+<br />                AND o2.battle = b2.name
+<br />                AND o1.ship = o2.ship
+<br />                AND b1.dates < b2.dates
+<br />                AND o1.result = 'damaged';
+<br />
+<br />            --3.3. Display all available information for every ship, including its class. Exclude results for classes, that have no ships. 
+<br />            SELECT *
+<br />            FROM ships s RIGHT JOIN classes c ON s.class = c.class
+<br />            WHERE s.name IS NOT NULL;
+<br />
+<br />            --3.4. Repeat 3.1 but include classes, that have no ships, but ships with same name exist
+<br />            SELECT *
+<br />            FROM ships s RIGHT JOIN classes c ON s.class = c.class
+<br />            WHERE s.name IS NOT NULL
+<br />            UNION
+<br />            SELECT *
+<br />            FROM ships s RIGHT JOIN classes c ON s.class = c.class
+<br />            WHERE s.name IS NULL AND c.class IN (SELECT name FROM ships);
+<br />
+<br />            --3.5. For every country display ship names, that never participated in a battle.  
+<br />            SELECT DISTINCT c.country, s.name
+<br />                FROM classes c
+<br />                    JOIN ships s
+<br />                        ON c.class = s.class
+<br />                    LEFT JOIN outcomes o
+<br />                        ON s.name = o.ship
+<br />            WHERE o.ship IS NULL
+<br />            ORDER BY c.country;
+<br />
         </div>
     </body>
 </html>
