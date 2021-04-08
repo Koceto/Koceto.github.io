@@ -1,37 +1,58 @@
-h1 {
-    text-align: center;
-    color: #00009e;
+body {
+  font-size: 20px;
 }
 
-#main-container {
-    max-width: 90%;
-    margin: auto;
-    text-align: center;
-    padding-top: 20px;
+.info-log {
+  color: black;
 }
 
-.article {
-    padding-top: 5px;
-    align-content: center;
-    max-width: 90%;
-    margin: auto;
+.error-log {
+  color: red;
+  font-weight: 600;
 }
 
-.article span {
-    color: #ff8f00;
-    background-color: #000b5d;
-    border-radius: 10px;
-    padding: 6px;
-    cursor: pointer;
+#portKnock-dialog {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(221, 221, 221, 0.5);
 }
 
-.article-content {
-    display: none;
-    font-size: 20px;
-    padding: 10px;
-    word-wrap: normal;
-    background-color: black;
-    color: #9b9dff;
-    line-height: 30px;
-    border-radius: 10px;
+#portKnock-dialog dialog {
+  border: 1px solid rgba(0, 0, 0, 0.548);
+  border-radius: 5px;
+}
+
+#portKnock-dialog:not(.open) {
+  display: none;
+}
+
+.input-container {
+  border-bottom: 1px solid #00000096;
+  color: #00000096;
+  margin: 0 0 0 10px;
+  font-size: 30px;
+  padding: 3px;
+}
+
+.label {
+  user-select: none;
+}
+
+.input {
+  border: 0px;
+  font-size: 25px;
+  color: #00000096;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
 }
