@@ -25,7 +25,7 @@ async function portKnock() {
   }
 
   log("Getting user ports...");
-  var portsPrompt = await readInput("Ports to knock(1;2;3):");
+  var portsPrompt = await readInput("Ports to knock: Ex:1;2;3");
 
   if (!portsPrompt) {
     log("Could not read ports!", logType.error);
