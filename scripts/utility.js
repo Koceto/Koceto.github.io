@@ -57,35 +57,35 @@ function clearInputWidth(event) {
   event.target.style.width = "";
 }
 
-(async () => {
-  window.onload = () => {
+(() => {
+  window.onload = async () => {
+    let dynamicContentLocation = "../html/desktop.html";
+    if (window.innerWidth < 960) {
+      dynamicContentLocation = "../html/mobile.html";
+    }
+
+    await new Promise((resolve, reject) => {
+      fetch(dynamicContentLocation, {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "text/plain",
+        },
+      })
+        .then((response) => {
+          return response.text();
+        })
+        .then((data) => {
+          document.getElementById("portKnock-content").innerHTML = data;
+          resolve();
+        })
+        .catch(reject);
+    });
+
     document.querySelectorAll("input").forEach((e) => {
       e.onkeydown = e.onfocus = setInputWidth;
       e.onblur = clearInputWidth;
     });
+
+    portKnock();
   };
-
-  let dynamicContentLocation = "../html/desktop.html";
-  if (window.innerWidth < 960) {
-    dynamicContentLocation = "../html/mobile.html";
-  }
-
-  await new Promise((resolve, reject) => {
-    fetch(dynamicContentLocation, {
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "text/plain",
-      },
-    })
-      .then((response) => {
-        return response.text();
-      })
-      .then((data) => {
-        document.getElementById("portKnock-content").innerHTML = data;
-        resolve();
-      })
-      .catch(reject);
-  });
-
-  portKnock();
 })();
