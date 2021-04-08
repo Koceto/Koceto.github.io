@@ -60,7 +60,7 @@ function clearInputWidth(event) {
 (async () => {
   window.onload = () => {
     document.querySelectorAll("input").forEach((e) => {
-      e.onkeypress = e.onfocus = setInputWidth;
+      e.onkeydown = e.onfocus = setInputWidth;
       e.onblur = clearInputWidth;
     });
   };
