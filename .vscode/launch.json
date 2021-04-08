@@ -5,7 +5,7 @@
           "name": "Launch localhost",
           "type": "chrome",
           "request": "launch",
-          "url": "${workspaceFolder}/index.html",
+          "url": "${workspaceFolder}/html/index.html",
           "webRoot": "${workspaceFolder}/wwwroot"
       },
       {

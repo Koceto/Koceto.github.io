@@ -26,9 +26,7 @@ async function readInput(label, defaultValue = "", placeholder = "") {
   inputElement.placeholder = placeholder;
   inputElement.value = defaultValue;
   dialogContainer.classList.add("open");
-
   inputElement.focus();
-  inputElement.select();
 
   let inputValue;
 
@@ -39,7 +37,7 @@ async function readInput(label, defaultValue = "", placeholder = "") {
       resolve();
     };
 
-    inputElement.onkeyup = (event) => {
+    inputElement.onkeypress = (event) => {
       if (event.key === "Enter") {
         submitFunc();
       }
@@ -59,12 +57,35 @@ function clearInputWidth(event) {
   event.target.style.width = "";
 }
 
-(() => {
+(async () => {
   window.onload = () => {
     document.querySelectorAll("input").forEach((e) => {
       e.onkeypress = e.onfocus = setInputWidth;
       e.onblur = clearInputWidth;
     });
-    portKnock();
   };
+
+  let dynamicContentLocation = "../html/desktop.html";
+  if (window.innerWidth < 960) {
+    dynamicContentLocation = "../html/mobile.html";
+  }
+
+  await new Promise((resolve, reject) => {
+    fetch(dynamicContentLocation, {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "text/plain",
+      },
+    })
+      .then((response) => {
+        return response.text();
+      })
+      .then((data) => {
+        document.getElementById("portKnock-content").innerHTML = data;
+        resolve();
+      })
+      .catch(reject);
+  });
+
+  portKnock();
 })();

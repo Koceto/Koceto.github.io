@@ -1,0 +1,11 @@
+@media only screen and (max-device-width : 960px) {
+  .input-container {
+    display: block;
+  }
+
+  #portKnock-dialog-input {
+    width: 100%;
+    height: 100px;
+    margin-top: 10px;
+  }
+}
