@@ -45,6 +45,8 @@ body {
 }
 
 .input {
+  min-width: 200px;
+  width: 200px;
   border: 0px;
   font-size: 25px;
   color: #00000096;
