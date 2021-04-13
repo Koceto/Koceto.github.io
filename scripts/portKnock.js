@@ -52,7 +52,7 @@ async function portKnock(requestDelay = 2000) {
     log(`Calling port \'${port}\' - \'${fetchUrl}\'`, logType.info, portsOrderedList);
 
     await new Promise((resolve) => {
-      fetch(fetchUrl);
+      fetch(fetchUrl).catch();
 
       setTimeout(() => {
         resolve;
