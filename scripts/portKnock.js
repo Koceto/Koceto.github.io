@@ -1,4 +1,4 @@
-async function portKnock() {
+async function portKnock(requestDelay = 2000) {
   log("Getting current IP Address...");
   const geoData = await new Promise((resolve, reject) => {
     fetch("https://ipgeolocation.abstractapi.com/v1/?api_key=1be9a6884abd4c3ea143b59ca317c6b2")
@@ -52,7 +52,11 @@ async function portKnock() {
     log(`Calling port \'${port}\' - \'${fetchUrl}\'`, logType.info, portsOrderedList);
 
     await new Promise((resolve) => {
-      fetch(fetchUrl).then(resolve).catch(resolve);
+      fetch(fetchUrl);
+
+      setTimeout(() => {
+        resolve;
+      }, requestDelay);
     });
   }
 
