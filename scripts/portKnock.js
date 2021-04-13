@@ -55,7 +55,7 @@ async function portKnock(requestDelay = 2000) {
       fetch(fetchUrl).catch();
 
       setTimeout(() => {
-        resolve;
+        resolve();
       }, requestDelay);
     });
   }
