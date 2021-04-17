@@ -1,7 +1,7 @@
 async function portKnock(requestDelay = 2000) {
   log("Getting current IP Address...");
   const geoData = await new Promise((resolve, reject) => {
-    fetch("https://ipgeolocation.abstractapi.com/v1/?api_key=1be9a6884abd4c3ea143b59ca317c6b2")
+    fetch("https://ipapi.co/json")
       .then((res) => res.json())
       .then(resolve)
       .catch(reject);
@@ -9,8 +9,8 @@ async function portKnock(requestDelay = 2000) {
 
   let userIp = null;
 
-  if (geoData && geoData.ip_address) {
-    userIp = geoData.ip_address;
+  if (geoData && geoData.ip) {
+    userIp = geoData.ip;
 
     log(`Geolocation returned user IP: \'${userIp}\'.`);
   } else {
