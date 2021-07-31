@@ -2,11 +2,7 @@ async function portKnock(requestDelay = 2000) {
   log("Getting IP address from query...");
   let userIp = getQueryStringValue("ip");
 
-  if (geoData && geoData.ip) {
-    userIp = geoData.ip;
-
-    log(`Geolocation returned user IP: \'${userIp}\'.`);
-  } else {
+  if (!userIp) {
     log("Failed to get user IP.");
   }
 
@@ -20,32 +16,40 @@ async function portKnock(requestDelay = 2000) {
   }
 
   log("Getting user ports...");
-  const portsPrompt = await readInput("Ports to knock (Ex: 1;2;3):");
+  let userPortsString = getQueryStringValue("ports");
+  
+  if (!userPortsString) {
+    log("Failed to get user Ports.");
+  }  
+  userPortsString = await readInput("Ports to knock (Ex: 1;2;3):", userPortsString);
 
-  if (!portsPrompt) {
+  if (!userPortsString) {
     log("Could not read ports!", logType.error);
     return;
   }
 
-  const ports = portsPrompt.split(";").filter((p) => p);
+  const ports = userPortsString.split(";").filter((p) => p);
 
   if (ports.length <= 0) {
     log("No ports found in input!", logType.error);
     return;
   }
 
+  const knockElement = document.getElementById("knock-element");
   const portsOrderedList = document.createElement("ol");
   const portsLogElement = log("User entered the following ports:");
 
   portsLogElement.appendChild(portsOrderedList);
 
   for (const port of ports) {
-    const fetchUrl = `https://${userIp}:${port}/`;
+    const urlToKnock = `https://${userIp}:${port.trim()}/`;
 
-    log(`Calling port \'${port}\' - \'${fetchUrl}\'`, logType.info, portsOrderedList);
+    log(`Calling port \'${port}\' - \'${urlToKnock}\'`, logType.info, portsOrderedList);
 
     await new Promise((resolve) => {
-      fetch(fetchUrl).catch();
+      const knocker = document.createElement("img");
+      knocker.src = urlToKnock;
+      knockElement.appendChild(knocker)
 
       setTimeout(() => {
         resolve();
