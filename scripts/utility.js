@@ -57,6 +57,20 @@ function clearInputWidth(event) {
   event.target.style.width = "";
 }
 
+function getQueryStringValue(key) {
+  const params = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+
+  for (let i = 0; i < params.length; i++) {
+      const kvp = params[i].split('=');
+
+      if (kvp[0] === key || kvp[0] === key+'[]') {
+         return decodeURIComponent(kvp[1]);
+      }
+  }
+
+  return null;
+}
+
 (() => {
   window.onload = async () => {
     let dynamicContentLocation = "../html/desktop.html";

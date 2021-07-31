@@ -1,13 +1,6 @@
 async function portKnock(requestDelay = 2000) {
-  log("Getting current IP Address...");
-  const geoData = await new Promise((resolve, reject) => {
-    fetch("https://ipapi.co/json")
-      .then((res) => res.json())
-      .then(resolve)
-      .catch(reject);
-  });
-
-  let userIp = null;
+  log("Getting IP address from query...");
+  let userIp = getQueryStringValue("ip");
 
   if (geoData && geoData.ip) {
     userIp = geoData.ip;
